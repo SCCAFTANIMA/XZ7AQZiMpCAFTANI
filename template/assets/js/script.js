@@ -18,7 +18,7 @@ $(document).ready(function() {
     // NEW ARRIVALS Carousel
     $("#productslider").owlCarousel({
         navigation: true,
-        items: 4,
+        items: 8,
         itemsTablet: [768, 2]
     });
 
@@ -48,10 +48,22 @@ $(document).ready(function() {
 
     // YOU MAY ALSO LIKE  carousel
 
-    $("#SimilarProductSlider").owlCarousel({
-        navigation: true
+    var SimilarProductSlider = $("#SimilarProductSlider");
+    SimilarProductSlider.owlCarousel({
+        navigation: false,
+        items:5,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:1000,
+        autoplayHoverPause:true
 
     });
+     SimilarProductSlider.trigger('owl.play',5000);
+    
+   
+    
+    
 
 
     // Home Look 2 || Single product showcase 

@@ -143,7 +143,8 @@
 <!-- include touchspin.js // touch friendly input spinner component   --> 
 <script src="template/assets/js/bootstrap.touchspin.js"></script> 
 
-<!-- include custom script for site  --> 
+<!-- include custom script for site  -->
+
 <script src="template/assets/js/script.js"></script>
 </body>
 </html>

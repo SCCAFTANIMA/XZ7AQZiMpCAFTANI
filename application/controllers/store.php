@@ -22,7 +22,7 @@ class Store extends CI_Controller {
         
         
         getContent("includes","header");
-        getContent("public","product");
+        getContent("public","single-product");
         getContent("includes","footer");
         
         

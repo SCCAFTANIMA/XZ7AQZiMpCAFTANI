@@ -331,7 +331,8 @@
        <li> <a href="#"> GANDOURA </a> </li>
         
         <!-- change width of megamenu = use class > megamenu-fullwidth, megamenu-60width, megamenu-40width -->
-        <li class="dropdown megamenu-80width "> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> TISSUS <b class="caret"> </b> </a>
+        <li class="dropdown megamenu-80width "> 
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> TISSUS <b class="caret"> </b> </a>
           <ul class="dropdown-menu">
             <li class="megamenu-content"> 
               
@@ -350,38 +351,39 @@
                 <li> <a href="#"> Fêtes traditionnelle </a> </li>
                 <li> <a href="#"> Ramadanesque </a> </li>
               </ul>
-              <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
-                <li>
-                  <p> <strong> dernière Collection </strong> </p>
-                </li>
-                <li> <a href="#"> Fiançaille </a> </li>
-                <li> <a href="#"> Anniversaires </a> </li>
-                <li> <a href="#"> Cérémonies </a> </li>
-                <li> <a href="#"> Dokhla </a> </li>
-                <li> <a href="#"> Circoncision </a> </li>
-                <li> <a href="#"> Fêtes traditionnelle </a> </li>
-                <li> <a href="#"> Ramadanesque </a> </li>
-              </ul>
-              <ul class="col-lg-2  col-sm-2 col-md-2  unstyled">
-                <li>
-                  <p> <strong> Top design </strong> </p>
-                </li>
-                  <li> <a href="#"> Fiançaille </a> </li>
-                <li> <a href="#"> Anniversaires </a> </li>
-                <li> <a href="#"> Cérémonies </a> </li>
-                <li> <a href="#"> Dokhla </a> </li>
-                <li> <a href="#"> Circoncision </a> </li>
-                <li> <a href="#"> Fêtes traditionnelle </a> </li>
-                <li> <a href="#"> Ramadanesque </a> </li>
-              </ul>
+             
+             
               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
-                <li class="no-margin productPopItem "> <a href="product-details.html"> <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> </a> <a class="text-center productInfo alpha90" href="product-details.html"> Eodem modo typi <br>
-                  <span> $60 </span> </a> </li>
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
               </ul>
-              <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
-                <li class="no-margin productPopItem relative"> <a href="product-details.html"> <img class="img-responsive" src="template/images/site/g5.jpg" alt="img"> </a> <a class="text-center productInfo alpha90" href="product-details.html"> Eodem modo typi <br>
-                  <span> $60 </span> </a> </li>
+               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
               </ul>
+               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
+              </ul>
+             
             </li>
           </ul>
         </li>
