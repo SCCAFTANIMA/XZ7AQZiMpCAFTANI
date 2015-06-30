@@ -16,9 +16,12 @@
 <!-- Bootstrap core CSS -->
 <link href="template/assets/bootstrap/css/bootstrap.css" rel="stylesheet">
 
+<!-- styles needed by minimalect -->
+<link href="template/assets/css/jquery.minimalect.min.css" rel="stylesheet">
+
 <!-- Custom styles for this template -->
 <link href="template/assets/css/style.css" rel="stylesheet">
-
+<link href="template/assets/css/style-2.css" rel="stylesheet">
 <!-- css3 animation effect for this template -->
 <link href="template/assets/css/animate.min.css" rel="stylesheet">
 
@@ -33,6 +36,8 @@
 <!-- styles needed by mCustomScrollbar -->
 <link href="template/assets/css/jquery.mCustomScrollbar.css" rel="stylesheet">
 
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
 <!-- Just for debugging purposes. -->
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -41,7 +46,8 @@
 <![endif]-->
 
 <!-- include pace script for automatic web page progress bar  -->
-
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 <script>
     paceOptions = {
       elements: true
@@ -58,17 +64,17 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"> &times; </button>
-        <h3 class="modal-title-site text-center" > Login  to YANKY </h3>
+        <h3 class="modal-title-site text-center" > Se connecter </h3>
       </div>
       <div class="modal-body">
         <div class="form-group login-username">
           <div >
-            <input name="log" id="login-user" class="form-control input"  size="20" placeholder="Enter Username" type="text">
+            <input name="log" id="login-user" class="form-control input"  size="20" placeholder="Votre pseudo ou adresse email" type="text">
           </div>
         </div>
         <div class="form-group login-password">
           <div >
-            <input name="Password" id="login-password" class="form-control input"  size="20" placeholder="Password" type="password">
+            <input name="Password" id="login-password" class="form-control input"  size="20" placeholder="Mot de passe" type="password">
           </div>
         </div>
         <div class="form-group">
@@ -82,15 +88,15 @@
         </div>
         <div >
           <div >
-            <input name="submit" class="btn  btn-block btn-lg btn-primary" value="LOGIN" type="submit">
+            <input name="submit" class="btn  btn-block btn-lg btn-primary" value="Se connecter" type="submit">
           </div>
         </div>
         <!--userForm--> 
         
       </div>
       <div class="modal-footer">
-        <p class="text-center"> Not here before? <a data-toggle="modal"  data-dismiss="modal" href="#ModalSignup"> Sign Up. </a> <br>
-          <a href="#" > Lost your password? </a> </p>
+        <p class="text-center">  <a data-toggle="modal"  data-dismiss="modal" href="#ModalSignup">Créer nouveau compte. </a> <br>
+          <a href="#" > Mot de passe oublié? </a> </p>
       </div>
     </div>
     <!-- /.modal-content --> 
@@ -173,6 +179,7 @@
         <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
           <div class="pull-right">
             <ul class="userMenu">
+                <li> <a href="creer-vitrine/steps?s=1"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="page/compte"><span class="hidden-xs"> MON COMPTE</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="#"  data-toggle="modal" data-target="#ModalLogin"> <span class="hidden-xs">SE CONNECTER</span> <i class="glyphicon glyphicon-log-in hide visible-xs "></i> </a> </li>
               <li class="hidden-xs"> <a href="#"  data-toggle="modal" data-target="#ModalSignup"> S'INSCRIRE </a> </li>

@@ -29,6 +29,51 @@ class Store extends CI_Controller {
     }
     
     
+    public function create(){
+        
+        
+        $step = intval($this->input->get("s"));
+        
+        if($step==1){
+            
+            getContent("includes","header");
+            getContent("private","create-stores/step-1");
+            getContent("includes","footer");
+            
+        }else if($step==2){
+            
+            getContent("includes","header");
+            getContent("private","create-stores/step-2");
+            getContent("includes","footer");
+            
+        }else if($step==3){
+            
+            getContent("includes","header");
+            getContent("private","create-stores/step-3");
+            getContent("includes","footer");
+            
+        }else if($step==4){
+            
+            getContent("includes","header");
+            getContent("private","create-stores/step-4");
+            getContent("includes","footer");
+            
+        }else if($step==5){
+            
+            getContent("includes","header");
+            getContent("private","create-stores/finish");
+            getContent("includes","footer");
+            
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
+    
     
     
     

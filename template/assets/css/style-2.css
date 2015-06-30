@@ -1,0 +1,16 @@
+
+
+
+.main-container .msg-success{
+    text-align: center;
+    min-height: 200px;
+    margin-top: 50px;
+}
+
+.main-container .msg-success .icon-success{
+    font-size: 400%;
+}
+
+.main-container .msg-success h1{
+    display: inline-block;
+}

@@ -20,7 +20,9 @@
 
 .minict_wrapper input {
     height: 32px !important;
-	padding: 0 2.2rem 0 12px;
+    padding: 0 2.2rem 0 12px;
+    border-style: none !important;
+  border-width: 0 !important;
 
 }
  .minict_wrapper ul {
