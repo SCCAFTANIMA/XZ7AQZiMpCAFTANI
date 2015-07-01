@@ -89,8 +89,11 @@
                     
                     
                     $this->browser->cleanToken("A-95555");
-                    echo $this->browser->setToken("A-95555")."<br>";
-                    echo $this->browser->getToken("A-95555");
+                    $token =  $this->browser->setToken("A-95555");
+                    
+                    
+                    
+                   
                     
                     ?>
                   
@@ -171,7 +174,8 @@
                         "telephonepro":telephonepro,
                         "fb":fb,
                         "twitter":twitter,
-                        "gplus":gplus
+                        "gplus":gplus,
+                        "token":"<?=$token?>"
                     },
                 type: 'POST',
                 dataType: 'json',
@@ -191,7 +195,9 @@
                      $("#set-step-1 .loading").removeClass("hidden");
                         
                       console.log(data);  
-                 }
+                 },error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                    }
             });
             
             return false;

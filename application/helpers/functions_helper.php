@@ -1,8 +1,16 @@
 <?php
 
 
+define("REGEX_FR", "ÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸÿüûùœôïîëêèéçæâà");
+define("ENCODING", "UTF-8");
 
 
+function clean($str=""){
+    
+    
+    return htmlentities(strip_tags($str),ENT_QUOTES,ENCODING);
+    
+}
 
 function getContent($type="public",$name='',$data=array()){
     
