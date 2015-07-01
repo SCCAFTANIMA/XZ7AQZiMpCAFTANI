@@ -14,3 +14,18 @@
 .main-container .msg-success h1{
     display: inline-block;
 }
+
+.input-error{
+    border-color: #eb5e58 !important;
+}
+
+.msg-error-form{
+    
+    color: #eb5e58;
+    font-size: 12px;
+    
+}
+
+.msg-error-form.description{
+    min-height: 0px;
+}

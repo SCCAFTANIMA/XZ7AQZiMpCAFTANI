@@ -179,7 +179,7 @@
         <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
           <div class="pull-right">
             <ul class="userMenu">
-                <li> <a href="creer-vitrine/steps?s=1"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+                <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="page/compte"><span class="hidden-xs"> MON COMPTE</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="#"  data-toggle="modal" data-target="#ModalLogin"> <span class="hidden-xs">SE CONNECTER</span> <i class="glyphicon glyphicon-log-in hide visible-xs "></i> </a> </li>
               <li class="hidden-xs"> <a href="#"  data-toggle="modal" data-target="#ModalSignup"> S'INSCRIRE </a> </li>

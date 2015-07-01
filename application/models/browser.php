@@ -6,17 +6,21 @@ class Browser extends CI_Model{
     
     
     
-    public function setData($data=array()){
+    public function setData($index="",$data=array()){
   
-         $_SESSION['data'] = $data;
-  
+        if($index!="" AND !empty($data)){
+            $_SESSION["data"][$index] = $data;
+            return TRUE;
+        }
+      
+        return FALSE;
     }
     
     
-    public function getData(){
+    public function getData($index=""){
         
-        if(isset($_SESSION['data']) AND !empty($_SESSION['data'])){
-            return $_SESSION['data'];
+        if(isset($_SESSION['data'][$index]) AND !empty($_SESSION['data'][$index])){
+            return $_SESSION['data'][$index];
         }else{
             return array();
         }

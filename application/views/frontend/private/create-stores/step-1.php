@@ -29,21 +29,24 @@
                 <div class="col-xs-12 col-sm-6">
                   <div class="form-group required">
                     <label for="name">Le nom<sup>*</sup> </label>
-                    <input required type="text" class="form-control" name="name" id="name" placeholder="Le nom de votre vitrine">
+                    
+                    <label class="msg-error-form name"></label>
+                    <input required type="text" class="form-control" value="<?=$this->stores->getValue("data_step_1","name")?>" name="name" id="name" placeholder="Le nom de votre vitrine">
                   </div>
                     
                  <div class="form-group required">
-                     <label for="name">Vitrine ID<sup>*</sup> </label><br>
-                     
-                    <input style="" required type="text" class="form-control" name="storeid" id="storeid" placeholder="Exemple: vitrine.caftan.marocaine">
+                     <label for="name">Vitrine ID<sup>*</sup> </label>
+                     <label class="msg-error-form storeid"></label>
+                    <input style="" required type="text" class="form-control" value="<?=$this->stores->getValue("data_step_1","storeid")?>" name="storeid" id="storeid" placeholder="Exemple: vitrine.caftan.marocaine">
                     <i class="fa fa-link"></i>&nbsp;&nbsp;
                     <span><?=  site_url("")?><span  style="font-weight: bold;" id="SID">vitrine.caftan.marocaine</span></span>
                  </div>
-                    
+              
                   
                   <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea rows="5" cols="26" name="description" class="form-control" id="description"></textarea>
+                     <label class="msg-error-form description"></label>
+                    <textarea rows="5" cols="26" name="description" class="form-control" value="<?=$this->stores->getValue("data_step_1","description")?>" id="description"></textarea>
                   </div>
                  
                   
@@ -53,13 +56,16 @@
                       <label for="email">Adresse Email Professionnel<sup>*</sup> 
                           <span style="font-weight: normal;font-size: 12px;">Pour recevoir des notifications et des courriers de votre vitrine</span>
                       </label>
-                      <input required type="text" class="form-control" name="emailpro" id="emailpro" placeholder="Adresse Email Professionnel">
+                      <label class="msg-error-form emailpro"></label>
+                      <input required type="text" class="form-control" value="<?=$this->stores->getValue("data_step_1","emailpro")?>" name="emailpro" id="emailpro" placeholder="Adresse Email Professionnel">
                   </div>
                  
                   
                   <div class="form-group required">
                     <label for="InputMobile">Téléphone professionnel<sup>*</sup></label>
-                    <input  required type="text"  name="telephonepro" id="telephonepro" class="form-control" placeholder="+212 522 668 698 ou 0522 668 698">
+                    
+                    <label class="msg-error-form telephonepro"></label>
+                    <input  required type="text"  name="telephonepro" id="telephonepro" class="form-control" value="<?=$this->stores->getValue("data_step_1","telephonepro")?>" placeholder="+212 522 668 698 ou 0522 668 698">
                   </div>
                     
                     
@@ -67,22 +73,29 @@
                     
                     
                     <div class="form-group">
-                        <i class="fa fa-facebook-official"></i>&nbsp;&nbsp;
+                        
                   
-                    <input style="width: 50%;display: inline-block" type="text"  name="fb" id="fb" class="form-control" id="fb">
+                        
+                        &nbsp;&nbsp;<label class="msg-error-form fb"></label><br>
+                        <i class="fa fa-facebook-official"></i>&nbsp;&nbsp;
+                    <input style="width: 50%;display: inline-block" type="text"  name="fb" value="<?=$this->stores->getValue("data_step_1","fb")?>" id="fb" class="form-control" id="fb">
                   </div>
                     
                     
                     <div class="form-group">
-                        <i class="fa fa-twitter"></i>&nbsp;&nbsp;
+                       
                     
-                    <input style="width: 50%;display: inline-block" type="text"  name="twitter" id="twitter" class="form-control" id="fb">
+                        &nbsp;&nbsp;<label class="msg-error-form twitter"></label><br>
+                         <i class="fa fa-twitter"></i>&nbsp;&nbsp;
+                    <input style="width: 50%;display: inline-block" type="text"  name="twitter" id="twitter" class="form-control" value="<?=$this->stores->getValue("data_step_1","twitter")?>" id="fb">
                   </div>
                     
                     <div class="form-group">
+                        
+                    
+                        &nbsp;&nbsp;<label class="msg-error-form gplus"></label><br>
                         <i class="fa fa-google-plus"></i>&nbsp;&nbsp;
-                    
-                    <input style="width: 50%;display: inline-block" type="text"  name="gplus" id="gplus" class="form-control" id="fb">
+                    <input style="width: 50%;display: inline-block" type="text"  name="gplus" id="gplus" class="form-control" value="<?=$this->stores->getValue("data_step_1","gplus")?>" id="fb">
                   </div>
                     
                     <?php
@@ -156,7 +169,7 @@
             
             var name =          $("#name").val();
             var storeid =       $("#storeid").val();
-            var description =   $("#description").text();
+            var description =   $("#description").val();
             var emailpro =      $("#emailpro").val();
             var telephonepro =  $("#telephonepro").val();
             var fb =            $("#fb").val();
@@ -189,20 +202,33 @@
                  },
                  success: function (data, textStatus, jqXHR) {
                      
+                     console.log(data);
                      $("#set-step-1").addClass("btn-primary");
                      $("#set-step-1").removeClass("btn-default");
                      $("#set-step-1 .no-loading").addClass("hidden");
                      $("#set-step-1 .loading").removeClass("hidden");
-                        
-                      console.log(data);  
+                     
+                     if(data.success===1){
+                         
+                         document.location.href = data.url;
+                         
+                     }else{
+                         for(var i in data.errors){
+                             $("#"+i).addClass("input-error");
+                             $("."+i).text(data.errors[i]);
+                         }
+                     }
                  },error: function (jqXHR, textStatus, errorThrown) {
-                        console.log(jqXHR);
-                    }
+                    console.log(jqXHR);
+                 }
             });
             
             return false;
         });
-
+        
+        var inputs_name = ["name","storeid","description","emailpro","telephonepro","fb","twitter","gplus"];
+        for(var i in inputs_name){skipError(inputs_name[i]);}
+        function skipError(arg){$($("#"+arg)).keyup(function(){$(this).removeClass("input-error");$("."+arg).text("");});}
 
 
 </script>

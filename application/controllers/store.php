@@ -34,7 +34,13 @@ class Store extends CI_Controller {
         
         $step = intval($this->input->get("s"));
         
-        if($step==1){
+        if($step==0){
+            
+            $this->stores->initCreateStore();
+            redirect("creer-vitrine/steps?s=1");
+            
+            
+        }else if($step==1){
             
             getContent("includes","header");
             getContent("private","create-stores/step-1");
