@@ -3,7 +3,22 @@
 class Ajax extends CI_Controller {
 
     
-  
+        
+    
+    public function createstore(){
+        
+        
+        
+        echo json_encode($this->input->post());
+        exit();
+        
+        
+        
+    }
+    
+    
+    
+    
     
     
     

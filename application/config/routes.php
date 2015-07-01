@@ -43,6 +43,8 @@ $route['404_override'] = 'error';
 
 
 $route['ajax/(:any)'] = 'ajax/$1';
+
+
 $route['user/(:any)'] = 'user/$1';
 $route['home/(:any)'] = 'home/$1';
 $route['categorie/(:any)'] = 'home/categorie/$1';

@@ -41,7 +41,7 @@ if($step==1){
       <h1 class="section-title-inner"><span><i class="fa fa-pencil-square-o fa-2"></i> Création d\'une vitrine</span></h1>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
-      <h4 class="caps"><a href="/creer-vitrine/steps?s=1"><i class="fa fa-chevron-left"></i> Retour à la dernière étape </a></h4>
+      <h4 class="caps"><a href="creer-vitrine/steps?s=1"><i class="fa fa-chevron-left"></i> Retour à la dernière étape </a></h4>
     </div>
   </div>';
     
@@ -62,7 +62,7 @@ if($step==1){
       <h1 class="section-title-inner"><span><i class="fa fa-pencil-square-o fa-2"></i> Création d\'une vitrine</span></h1>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
-      <h4 class="caps"><a href="/creer-vitrine/steps?s=2"><i class="fa fa-chevron-left"></i> Retour à la dernière étape </a></h4>
+      <h4 class="caps"><a href="creer-vitrine/steps?s=2"><i class="fa fa-chevron-left"></i> Retour à la dernière étape </a></h4>
     </div>
   </div>';
     
@@ -83,7 +83,7 @@ if($step==1){
       <h1 class="section-title-inner"><span><i class="fa fa-pencil-square-o fa-2"></i> Création d\'une vitrine</span></h1>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-5 rightSidebar">
-      <h4 class="caps"><a href="/creer-vitrine/steps?s=3"><i class="fa fa-chevron-left"></i> Retour à la dernière étape </a></h4>
+      <h4 class="caps"><a href="creer-vitrine/steps?s=3"><i class="fa fa-chevron-left"></i> Retour à la dernière étape </a></h4>
     </div>
   </div>';
     

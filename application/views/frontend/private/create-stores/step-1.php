@@ -22,7 +22,7 @@
           <div class="w100 clearfix">
             <div class="row userInfo">
               <div class="col-lg-12">
-                <h2 class="block-title-2"> Saississez le nom de vitrine, description et l'adresse et tout les champs oubligatoire (*).  </h2>
+                <h2 class="block-title-2"> Saisissez le nom de vitrine, description et l'adresse et tout les champs obligatoire (*).  </h2>
               </div>
               
               <form>
@@ -35,9 +35,9 @@
                  <div class="form-group required">
                      <label for="name">Vitrine ID<sup>*</sup> </label><br>
                      
-                    <input style="" required type="text" class="form-control" name="name" id="name" placeholder="Exemple: vitrine.caftan.marocaine">
+                    <input style="" required type="text" class="form-control" name="storeid" id="storeid" placeholder="Exemple: vitrine.caftan.marocaine">
                     <i class="fa fa-link"></i>&nbsp;&nbsp;
-                    <span><?=  site_url("")?><span  style="font-weight: bold;" id="signID">vitrine.caftan.marocaine</span></span>
+                    <span><?=  site_url("")?><span  style="font-weight: bold;" id="SID">vitrine.caftan.marocaine</span></span>
                  </div>
                     
                   
@@ -59,7 +59,7 @@
                   
                   <div class="form-group required">
                     <label for="InputMobile">Téléphone professionnel<sup>*</sup></label>
-                    <input  required type="text"  name="telephonepro" id="telephonepro" class="form-control">
+                    <input  required type="text"  name="telephonepro" id="telephonepro" class="form-control" placeholder="+212 522 668 698 ou 0522 668 698">
                   </div>
                     
                     
@@ -85,7 +85,14 @@
                     <input style="width: 50%;display: inline-block" type="text"  name="gplus" id="gplus" class="form-control" id="fb">
                   </div>
                     
+                    <?php
                     
+                    
+                    $this->browser->cleanToken("A-95555");
+                    echo $this->browser->setToken("A-95555")."<br>";
+                    echo $this->browser->getToken("A-95555");
+                    
+                    ?>
                   
                 </div>
               </form>
@@ -101,8 +108,8 @@
                   </a> 
               </div>
               <div class="pull-right"> 
-                  <a class="btn btn-primary btn-small "  href="creer-vitrine/steps?s=2#form"> Continuer &nbsp; 
-                      <i class="fa fa-arrow-right hidden loading"></i> <i class="no-loading fa fa-spinner fa-spin"></i> </a> </div>
+                  <a class="btn btn-primary btn-small " id="set-step-1"  href="creer-vitrine/steps?s=2#form"> Continuer &nbsp; 
+                      <i class="fa fa-arrow-right loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </a> </div>
             </div>
           </div>
           <!--/ cartFooter --> 
@@ -119,5 +126,79 @@
   
   <div style="clear:both"></div>
 </div>
+
+<!-- Placed at the end of the document so the pages load faster --> 
+<script type="text/javascript" src="template/assets/js/jquery/1.11.1/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+    
+    
+        $("#storeid").keyup(function(){
+            
+            $("#SID").text($("#storeid").val());
+            
+        });
+
+        $("#name").keyup(function(){
+            
+         
+            var str = $(this).val().replace(/ /g,'.');
+            $("#storeid").val(str);
+            $("#SID").text(str);
+            
+            
+        });
+        
+        $("#set-step-1").on('click',function(){
+            
+            
+            var name =          $("#name").val();
+            var storeid =       $("#storeid").val();
+            var description =   $("#description").text();
+            var emailpro =      $("#emailpro").val();
+            var telephonepro =  $("#telephonepro").val();
+            var fb =            $("#fb").val();
+            var twitter =       $("#twitter").val();
+            var gplus =         $("#gplus").val();
+            
+            
+            $.ajax({
+                url:"ajax/createstore",
+                data:{  
+                        "name":name,
+                        "storeid":storeid,
+                        "description":description,
+                        "emailpro":emailpro,
+                        "telephonepro":telephonepro,
+                        "fb":fb,
+                        "twitter":twitter,
+                        "gplus":gplus
+                    },
+                type: 'POST',
+                dataType: 'json',
+                beforeSend: function (xhr) {
+
+                     $("#set-step-1").removeClass("btn-primary");
+                     $("#set-step-1").addClass("btn-default");
+                     $("#set-step-1 .no-loading").removeClass("hidden");
+                     $("#set-step-1 .loading").addClass("hidden");
+                     
+                 },
+                 success: function (data, textStatus, jqXHR) {
+                     
+                     $("#set-step-1").addClass("btn-primary");
+                     $("#set-step-1").removeClass("btn-default");
+                     $("#set-step-1 .no-loading").addClass("hidden");
+                     $("#set-step-1 .loading").removeClass("hidden");
+                        
+                      console.log(data);  
+                 }
+            });
+            
+            return false;
+        });
+
+
+
+</script>
 <!-- /.main-container-->
 <div class="gap"> </div>
