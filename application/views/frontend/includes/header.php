@@ -53,7 +53,7 @@
       elements: true
     };
 </script>
-
+<script type="text/javascript" src="template/assets/js/jquery/1.11.1/jquery-1.11.1.min.js"></script>
 </head>
 
 <body>
@@ -303,60 +303,80 @@
 
 
 
-<li class="active"> <a href="#"> Acceuil </a> </li>
-
-        <li class="dropdown megamenu-fullwidth"> <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Caftani  <b class="caret"> </b> </a>
-          <ul class="dropdown-menu">
-            <li class="megamenu-content ">
-              <ul class="col-lg-3  col-sm-3 col-md-3 unstyled noMarginLeft newCollectionUl">
-                <li class="no-border">
-                  <p class="promo-1"> <strong> Nouvelle COLLECTION </strong> </p>
-                </li>
-                <li> <a href="category.html"> Tous les Caftans </a> </li>
-                <li> <a href="category.html"> Caftan Marocain </a> </li>
-                <li> <a href="category.html"> Caftani Modèrne </a> </li>
-                <li> <a href="category.html"> Caftani traditionnel </a> </li>
-                <li> <a href="category.html"> Nouveaux Caftani </a> </li>
-              </ul>
-              <ul class="col-lg-3  col-sm-3 col-md-3  col-xs-4">
-                <li> <a class="newProductMenuBlock" href="product-details.html"> <img class="img-responsive" src="template/images/site/promo1.jpg" alt="product"> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> TKACHETI </span> </a> </li>
-              </ul>
-              <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                <li> <a class="newProductMenuBlock" href="product-details.html"> <img class="img-responsive" src="template/images/site/promo2.jpg" alt="product"> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> BELDI </span> </a> </li>
-              </ul>
-              <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-4">
-                <li> <a class="newProductMenuBlock" href="product-details.html"> <img class="img-responsive" src="template/images/site/promo3.jpg" alt="product"> <span class="ProductMenuCaption"> <i class="fa fa-caret-right"> </i> ROMI </span> </a> </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-
-
-        <li> <a href="#"> TAKCHITA </a> </li>
-      <li> <a href="#"> DJELLABA </a> </li>
-      <li> <a href="#"> JABADOR </a> </li>
-       <li> <a href="#"> GANDOURA </a> </li>
+      <li class="active"> <a href="#"> Acceuil </a> </li>
+      
         
         <!-- change width of megamenu = use class > megamenu-fullwidth, megamenu-60width, megamenu-40width -->
         <li class="dropdown megamenu-80width "> 
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> TISSUS <b class="caret"> </b> </a>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Traditionnel <b class="caret"> </b> </a>
           <ul class="dropdown-menu">
             <li class="megamenu-content"> 
               
               <!-- megamenu-content -->
               
               <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
-                <li>
-                  <p> <strong> Evenement  </strong> </p>
+               
+                  <li> <a href="#"> <strong>Caftan</strong> </a> </li>
+                  <li> <a href="#"> <strong>Takchita</strong> </a> </li>
+                <li> <a href="#"> <strong>Djellaba</strong> </a> </li>
+                <li> <a href="#"> <strong>Jabadour</strong> </a> </li>
+                 <li> <a href="#"> <strong>Gandoura</strong> </a> </li>
+              </ul>
+             
+             
+              <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
                 </li>
-                <li> <a href="#"> Mariage </a> </li>
-                <li> <a href="#"> Fiançaille </a> </li>
-                <li> <a href="#"> Anniversaires </a> </li>
-                <li> <a href="#"> Cérémonies </a> </li>
-                <li> <a href="#"> Dokhla </a> </li>
-                <li> <a href="#"> Circoncision </a> </li>
-                <li> <a href="#"> Fêtes traditionnelle </a> </li>
-                <li> <a href="#"> Ramadanesque </a> </li>
+              </ul>
+               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
+              </ul>
+               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
+              </ul>
+             
+            </li>
+          </ul>
+        </li>
+
+
+
+
+        <li class="dropdown megamenu-80width "> 
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Echarpe & Foulards  <b class="caret"> </b> </a>
+          <ul class="dropdown-menu">
+            <li class="megamenu-content"> 
+              
+              <!-- megamenu-content -->
+              
+              <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
+               
+                  <li> <a href="#"> <strong>Soi</strong> </a> </li>
+                  <li> <a href="#"> <strong>Cachemir</strong> </a> </li>
+                <li> <a href="#"> <strong>Synthetique</strong> </a> </li>
+                <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
               </ul>
              
              
@@ -404,15 +424,63 @@
 
 
 
+        
+        <li class="dropdown megamenu-80width "> 
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#"> Accessoires  <b class="caret"> </b> </a>
+          <ul class="dropdown-menu">
+            <li class="megamenu-content"> 
+              
+              <!-- megamenu-content -->
+              
+              <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
+               
+                  <li> <a href="#"> <strong>Broches</strong> </a> </li>
+                  <li> <a href="#"> <strong>Ruban en perle</strong> </a> </li>
+                <li> <a href="#"> <strong>Perles swarovski</strong> </a> </li>
+                <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+              </ul>
+             
+             
+              <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
+              </ul>
+               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
+              </ul>
+               <ul class="col-lg-3  col-sm-3 col-md-3 col-xs-6">
+                <li class="no-margin productPopItem "> <a href="product-details.html"> 
+                        <img class="img-responsive" src="template/images/site/g4.jpg" alt="img"> 
+                    </a> 
+                    <a class="text-center productInfo alpha90" href="product-details.html"> 
+                        Eodem modo typi <br>
+                    <span> $60 </span> 
+                    </a> 
+                </li>
+              </ul>
+             
+            </li>
+          </ul>
+        </li>
 
 
 
-
-
-
-
-
-
+        <li><a href="#">Tissus</a></li>
 
 
 

@@ -150,9 +150,7 @@ class Stores extends CI_Model{
         $this->browser->setData('data_step_2',array());
         $this->browser->setData('data_step_3',array());
         $this->browser->setData('data_step_4',array());
-        $this->browser->setData('data_step_5',array());
-        
-        
+     
     }
     
     

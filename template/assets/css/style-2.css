@@ -29,3 +29,61 @@
 .msg-error-form.description{
     min-height: 0px;
 }
+
+
+#select-colors li{
+    float: left;
+    list-style: none;
+    outline: 4px solid #fff;
+    margin-right: 5px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-bottom: 5px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    background-color: #eeeeee;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+#select-colors li.checked{
+    outline: 4px solid #2ecc71;
+}
+
+.addlist span{
+    display: inline-block;
+    border: 1px solid #d8d2d2;
+    text-transform: uppercase;
+   
+  transition: all 0.25s linear 0s;
+  -webkit-transition: all 0.25s linear 0s;
+  -moz-transition: all 0.25s linear 0s;
+  -ms-transition: all 0.25s linear 0s;
+  -o-transition: all 0.25s linear 0s;
+  padding: 5px 10px 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.addlist span b{
+    font-size: 12px;
+}
+
+.type-select{
+    margin-bottom: 10px;
+    width: 85%;
+    display: inline-block;
+}
+
+.type-select-delete{
+    width: 9%;
+    height: 34px;
+    display: inline-block;
+    margin-left: 5px;
+    padding-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+

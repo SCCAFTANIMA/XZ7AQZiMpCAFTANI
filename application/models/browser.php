@@ -8,7 +8,7 @@ class Browser extends CI_Model{
     
     public function setData($index="",$data=array()){
   
-        if($index!="" AND !empty($data)){
+        if($index!="" ){
             $_SESSION["data"][$index] = $data;
             return TRUE;
         }

@@ -46,7 +46,7 @@
                   <div class="form-group">
                     <label for="description">Description</label>
                      <label class="msg-error-form description"></label>
-                    <textarea rows="5" cols="26" name="description" class="form-control" value="<?=$this->stores->getValue("data_step_1","description")?>" id="description"></textarea>
+                    <textarea rows="5" cols="26" name="description" class="form-control" value="" id="description"><?=$this->stores->getValue("data_step_1","description")?></textarea>
                   </div>
                  
                   
@@ -144,7 +144,7 @@
 </div>
 
 <!-- Placed at the end of the document so the pages load faster --> 
-<script type="text/javascript" src="template/assets/js/jquery/1.11.1/jquery-1.11.1.min.js"></script>
+
 <script type="text/javascript">
     
     

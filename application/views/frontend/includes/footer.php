@@ -138,7 +138,7 @@
 <script src="template/assets/js/owl.carousel.min.js"></script> 
 
 <!-- jQuery minimalect // custom select   --> 
-<script src="template/assets/js/jquery.minimalect.min.js"></script> 
+<!--<script src="template/assets/js/jquery.minimalect.min.js"></script> -->
 
 <!-- include touchspin.js // touch friendly input spinner component   --> 
 <script src="template/assets/js/bootstrap.touchspin.js"></script> 
