@@ -26,6 +26,11 @@ class Ajax extends CI_Controller {
             echo json_encode($this->stores->createStoreStep3());
              exit();
             
+        }else if($step==4){
+            
+            echo json_encode($this->stores->createStoreConfirmation());
+             exit();
+            
         }
          
             

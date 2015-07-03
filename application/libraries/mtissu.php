@@ -1,6 +1,6 @@
 <?php
 
-class Tissu{
+class mTissu{
     
     protected $id_tissu;
     protected $name;

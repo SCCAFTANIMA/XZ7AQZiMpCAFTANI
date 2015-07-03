@@ -3,7 +3,74 @@
 class Browser extends CI_Model{
     
     
+    public function isLogged(){
+        
+        if( !empty($this->getAllUserData()) AND intval($this->getUserIdFromCookie())>0 ){
+            return TRUE;
+        }
+        
+        return FALSE;
+    }
     
+    
+    public function setUserIdToCookie($id=0){
+        
+        if($id>0){
+            
+            $this->session->set_userdata(array("__ID"=>  encrypt(  intval($id)  )));
+        }
+        
+    }
+    
+    
+    public function getUserIdFromCookie(){
+        
+       $id = $this->session->userdata("__ID");
+       if($id!=""){
+           return decrypt($id);
+       }
+       return ;
+    }
+    
+    
+    
+    public function getAllUserData($data=array()){
+        
+        
+        if(isset($_SESSION['user'])){
+            return $_SESSION['user'];
+        }
+        
+    }
+    
+    public function setAllUserData($data=array()){
+        
+        
+        if(!empty($data)){
+            $_SESSION['user'] = $data;
+        }
+        
+        
+    }
+    
+    public function setUser($index='',$value=""){
+        
+        if($index!="" AND $value!=""){
+            $_SESSION['user'][$index] = $value;
+        }
+        return TRUE;
+    }
+    
+    
+    public function getUser($index=''){
+        
+        
+        if($index!="" AND $_SESSION['user'][$index] AND $_SESSION['user'][$index]!=""){
+            return $_SESSION['user'][$index];
+        }
+        
+        return ;
+    }
     
     
     public function setData($index="",$data=array()){

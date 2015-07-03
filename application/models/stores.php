@@ -4,16 +4,75 @@ class Stores extends CI_Model{
     
     
     
-    public function checkCurrentPosition($step){
+    
+    
+    
+    public function createStoreConfirmation(){
         
-       $step_from_session = intval($this->browser->getData("step"));
-       
-       if($step_from_session!=($step-1)){
+        $errors = array();
+        $data = array();
+        $token = $this->input->post("token");
+        $token_from_session = $this->browser->getToken("C-94555");
+        
+        $data = array("$token - $token_from_session");
+        if($token==$token_from_session){
+            
+           $step_1_data = $this->browser->getData("data_step_1");
+           $step_2_data = $this->browser->getData("data_step_2");
+           $step_3_data = $this->browser->getData("data_step_3");
+            
+          if(empty($step_1_data)){
+              $errors['step-1'] = "Les donne step-1 sont introuvable !";
+          }
+          $data = array(
+              "store"   => $step_1_data,
+              "store-colors-tissu"=>$step_2_data
+          );
            
-      
-           redirect( "creer-vitrine/steps?s=".($step_from_session+1) );
-       }
-
+            
+        }else{
+            $errors['token'] = "Vous pouvez pas d'ajouter cette vitrine !";
+        }
+        
+        
+        
+        if(empty($errors)){
+            
+            $pack_id = 1;
+            
+            $store = array(
+                "name"  => $data['store']['name'],
+                "description"   => $data['store']['description'],
+                "date"  => date('Y-m-d H:i',time()),
+                "emailpro"=>$data['store']['emailpro'], 
+                "telephonepro"=>$data['store']['telephonepro'], 
+                "User_id"=> $this->browser->getUser("id"), 
+                "Pack_id"=> $pack_id,  
+            );
+            
+            
+            $this->db->insert("store",$store);
+            
+            $store_id = $this->db->insert_id();
+            
+            $pack_store = array(
+                "nbr_product"   => 5,
+                "update_action" =>0,
+                "Store_id"      => $store_id
+                
+            );
+            
+            $this->db->insert("store",$pack_store);
+            
+            return array("success"=>1,"url"=>"creer-vitrine/steps?s=5&id=".$store_id);
+        }else{
+            return array("success"=>0,"url"=>"creer-vitrine/steps?s=0");
+        }
+        
+        
+        
+        
+       
     }
     
     public function createStoreStep3(){
@@ -31,7 +90,7 @@ class Stores extends CI_Model{
         $types = $this->input->post("types");
         $colors = $this->input->post("colors");
         $token = $this->input->post("token");
-        $token_from_session = $this->browser->setToken("A-95655");
+        $token_from_session = $this->browser->getToken("A-95655");
         
         
         if($token!=$token_from_session){
@@ -200,6 +259,22 @@ class Stores extends CI_Model{
         }
         
         
+    }
+    
+    
+    
+    
+    public function checkCurrentPosition($step){
+        
+       $step_from_session = intval($this->browser->getData("step"));
+       
+       
+       if($step_from_session!=($step-1)){
+          
+           
+           redirect( "creer-vitrine/steps?s=".($step_from_session+1) );
+       }
+
     }
     
     
