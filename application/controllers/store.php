@@ -4,11 +4,7 @@ class Store extends CI_Controller {
 
 
     public function index(){
-	
-//        getContent("includes","header");
-//        getContent("public","store");
-//        getContent("includes","footer");
-        
+
         
         $this->errors->notfound();
       
@@ -32,19 +28,18 @@ class Store extends CI_Controller {
     public function create(){
         
         
+       if($this->browser->isLogged()){
+            
         
         $step = intval($this->input->get("s"));
         
-        if($step==0){
-            
+        if($step==0){   
             
             $this->stores->initCreateStore();
-            redirect("creer-vitrine/steps?s=1");
-            
+            redirect("creer-vitrine/steps?s=1"); 
             
         }else if($step==1){
-            
-            
+
             
             $this->browser->setData('step',0);
             getContent("includes","header");
@@ -87,7 +82,9 @@ class Store extends CI_Controller {
         
         
         
-        
+        }else{
+            redirect("page/connexion");
+        }
         
         
     }

@@ -98,17 +98,7 @@
                     <input style="width: 50%;display: inline-block" type="text"  name="gplus" id="gplus" class="form-control" value="<?=$this->stores->getValue("data_step_1","gplus")?>" id="fb">
                   </div>
                     
-                    <?php
                     
-                    
-                    $this->browser->cleanToken("A-95555");
-                    $token =  $this->browser->setToken("A-95555");
-                    
-                    
-                    
-                   
-                    
-                    ?>
                   
                 </div>
               </form>
@@ -124,8 +114,8 @@
                   </a> 
               </div>
               <div class="pull-right"> 
-                  <a class="btn btn-primary btn-small " id="set-step-1"  href="creer-vitrine/steps?s=2#form"> Continuer &nbsp; 
-                      <i class="fa fa-arrow-right loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </a> </div>
+                  <button class="btn btn-primary btn-small " id="set-step-1"  href="creer-vitrine/steps?s=2#form"> Continuer &nbsp; 
+                      <i class="fa fa-arrow-right loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </button> </div>
             </div>
           </div>
           <!--/ cartFooter --> 
@@ -147,7 +137,17 @@
 
 <script type="text/javascript">
     
-    
+    <?php
+                    
+                    
+                    $this->browser->cleanToken("A-95555");
+                    $token =  $this->browser->setToken("A-95555");
+                    
+                    
+                    
+                   
+                    
+                    ?>
         $("#storeid").keyup(function(){
             
             $("#SID").text($("#storeid").val());
@@ -199,6 +199,7 @@
                      $("#set-step-1").addClass("btn-default");
                      $("#set-step-1 .no-loading").removeClass("hidden");
                      $("#set-step-1 .loading").addClass("hidden");
+                     $("#set-step-1").attr("disabled",true);
                      
                  },
                  success: function (data, textStatus, jqXHR) {
@@ -208,6 +209,7 @@
                      $("#set-step-1").removeClass("btn-default");
                      $("#set-step-1 .no-loading").addClass("hidden");
                      $("#set-step-1 .loading").removeClass("hidden");
+                     $("#set-step-1").attr("disabled",false);
                      
                      if(data.success===1){
                          

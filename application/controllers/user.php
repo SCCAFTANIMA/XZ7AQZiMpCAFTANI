@@ -3,7 +3,14 @@
 class User extends CI_Controller {
 
 
-    public function register(){
+    
+   
+    
+    public function signin(){
+        
+        
+        echo json_encode($this->users->signin());
+        exit;
         
         
     }

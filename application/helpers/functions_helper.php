@@ -138,4 +138,12 @@ function encrypt($data='') {
         return '';
         
     }
+    
+    
+    
+    
+    
+    function cryptPassword($str=''){
+        return sha1(sha1(md5(md5($str))));
+    }
 

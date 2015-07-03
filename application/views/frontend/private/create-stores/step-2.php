@@ -61,8 +61,8 @@
                         <a class="btn btn-primary" href="creer-vitrine/steps?s=1#form"> 
                             <i class="fa fa-arrow-left"></i> &nbsp; Précédente </a> </div>
                     <div class="pull-right"> 
-                        <a class="btn btn-primary btn-small "  id="set-step-2" href="creer-vitrine/steps?s=3#form"> Continuer &nbsp; 
-                      <i class="fa fa-arrow-right loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </a> </div>
+                        <button class="btn btn-primary btn-small "  id="set-step-2" href="creer-vitrine/steps?s=3#form"> Continuer &nbsp; 
+                      <i class="fa fa-arrow-right loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </button> </div>
             
             </div>
           </div>
@@ -114,6 +114,7 @@
                      $("#set-step-2").addClass("btn-default");
                      $("#set-step-2 .no-loading").removeClass("hidden");
                      $("#set-step-2 .loading").addClass("hidden");
+                     $("#set-step-2").attr("disabled",true);
              },
              success: function (data, textStatus, jqXHR) {
                         
@@ -121,6 +122,7 @@
                    $("#set-step-2").removeClass("btn-default");
                    $("#set-step-2 .no-loading").addClass("hidden");
                    $("#set-step-2 .loading").removeClass("hidden");
+                   $("#set-step-2").attr("disabled",false);
                    
                    document.location.href = data.url;
                    console.log(data);

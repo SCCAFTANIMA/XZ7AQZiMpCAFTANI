@@ -4,6 +4,10 @@ class Page extends CI_Controller {
 
  
     
+    public function __construct() {
+        parent::__construct();
+    }
+    
     public function contact(){
         
         getContent("includes","header");
@@ -15,11 +19,49 @@ class Page extends CI_Controller {
     
     public function compte(){
         
-        getContent("includes","header");
-        getContent("private","manage-profile");
-        getContent("includes","footer");
+        if($this->browser->isLogged()){
+            
+            getContent("includes","header");
+            getContent("private","manage-profile");
+            getContent("includes","footer");
+            
+        }else{
+            redirect("page/connexion");
+        }
+             
+    }
+    
+    
+    public function connexion(){
+        
+        if(!$this->browser->isLogged()){
+            
+            getContent("includes","header");
+            getContent("public","login");
+            getContent("includes","footer");
+            
+        }else{
+            redirect("page/compte");
+        }
         
     }
+    
+    
+    
+     public function inscription(){
+        
+        if(!$this->browser->isLogged()){
+            
+            getContent("includes","header");
+            getContent("public","signup");
+            getContent("includes","footer");
+            
+            
+        }else{
+            redirect("page/compte");
+        }
+         
+     }
     
     
     public function apropos(){

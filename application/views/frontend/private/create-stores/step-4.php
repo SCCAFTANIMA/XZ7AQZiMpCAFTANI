@@ -125,8 +125,8 @@
                         <a class="btn btn-primary" href="creer-vitrine/steps?s=3#form"> <i class="fa fa-arrow-left"></i> 
                             &nbsp; Précédente </a> </div>
                     <div class="pull-right"> 
-                        <a href="creer-vitrine/steps?s=5#form" id="confirm" class="btn btn-primary btn-small " > Confirmer &nbsp; 
-                            <i class="fa fa-arrow-right  loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </a> </div>
+                        <button href="creer-vitrine/steps?s=5#form" id="confirm" class="btn btn-primary btn-small " > Confirmer &nbsp; 
+                            <i class="fa fa-arrow-right  loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </button> </div>
                   </div>
                 </div>
                 <!--/ cartFooter --> 
@@ -206,6 +206,7 @@
                      $("#confirm").addClass("btn-default");
                      $("#confirm .no-loading").removeClass("hidden");
                      $("#confirm .loading").addClass("hidden");
+                     $("#confirm").attr("disabled",true);
                      
                  },
                  success: function (data, textStatus, jqXHR) {
@@ -215,6 +216,7 @@
                      $("#confirm").removeClass("btn-default");
                      $("#confirm .no-loading").addClass("hidden");
                      $("#confirm .loading").removeClass("hidden");
+                     $("#confirm").attr("disabled",false);
                      
                      document.location.href = data.url;
                  },

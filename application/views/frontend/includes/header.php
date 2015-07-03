@@ -58,6 +58,7 @@
 
 <body>
 
+    <?php if(!$this->browser->isLogged()): ?>
 <!-- Modal Login start -->
 <div class="modal signUpContent fade" id="ModalLogin" tabindex="-1" role="dialog" >
   <div class="modal-dialog ">
@@ -162,6 +163,8 @@
 </div>
 <!-- /.ModalSignup End --> 
 
+<?php endif; ?>
+
 <!-- Fixed navbar start -->
 <div class="navbar navbar-yanky navbar-fixed-top megamenu" role="navigation">
   <div class="navbar-top">
@@ -179,10 +182,20 @@
         <div class="col-lg-6 col-sm-6 col-xs-6 col-md-6 no-margin no-padding">
           <div class="pull-right">
             <ul class="userMenu">
-                <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+                
+             <?php if($this->browser->isLogged()): ?>
+                
+              <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="page/compte"><span class="hidden-xs"> MON COMPTE</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+              <?php else: ?>
+              
+              <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="#"  data-toggle="modal" data-target="#ModalLogin"> <span class="hidden-xs">SE CONNECTER</span> <i class="glyphicon glyphicon-log-in hide visible-xs "></i> </a> </li>
               <li class="hidden-xs"> <a href="#"  data-toggle="modal" data-target="#ModalSignup"> S'INSCRIRE </a> </li>
+              
+              <?php endif; ?>
+              
+              
             </ul>
           </div>
         </div>
