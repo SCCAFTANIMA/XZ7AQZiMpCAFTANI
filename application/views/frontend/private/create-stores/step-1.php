@@ -188,7 +188,8 @@
                         "fb":fb,
                         "twitter":twitter,
                         "gplus":gplus,
-                        "token":"<?=$token?>"
+                        "token":"<?=$token?>",
+                        "step":1
                     },
                 type: 'POST',
                 dataType: 'json',

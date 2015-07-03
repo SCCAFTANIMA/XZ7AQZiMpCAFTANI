@@ -4,7 +4,67 @@ class Stores extends CI_Model{
     
     
     
-    public function createStore(){
+    public function checkCurrentPosition($step){
+        
+       $step_from_session = intval($this->browser->getData("step"));
+       
+       if($step_from_session!=($step-1)){
+           
+      
+           redirect( "creer-vitrine/steps?s=".($step_from_session+1) );
+       }
+
+    }
+    
+    public function createStoreStep3(){
+        
+        $this->browser->setData("step",3);
+        $this->browser->setData("data_step_3",array("pack"=>1));
+        return array("url"=>"creer-vitrine/steps?s=4#form");
+        
+    }
+    public function createStoreStep2(){
+        
+        
+        $data = array("colors"=>array(),"types"=>array());
+        $errors = array();
+        $types = $this->input->post("types");
+        $colors = $this->input->post("colors");
+        $token = $this->input->post("token");
+        $token_from_session = $this->browser->setToken("A-95655");
+        
+        
+        if($token!=$token_from_session){
+            $errors['token'] = "Erreur #1";
+        }
+        
+        if(!empty($types)){
+            foreach ($types AS $key => $value){ $types[$key] = intval($value);}
+            $data['types']= array_unique($types);
+        }
+        
+        if(!empty($colors)){
+             foreach ($colors AS $key => $value){ $colors[$key] = intval($value);}
+             $data['colors']= array_unique($colors);
+        }
+        
+        
+        $this->browser->setData("step",2);
+        if(empty($errors)){
+
+            $this->browser->setData("data_step_2",$data);
+            
+            return array("success"=>1,"url"=>"creer-vitrine/steps?s=3#form");
+        }else{
+            return array("success"=>0,"errors"=>$errors,"url"=>"creer-vitrine/steps?s=3#form");
+        }
+        
+        
+        
+    }
+    
+    
+    public function createStoreStep1(){
         
         $errors = array();
         $data = array();
@@ -129,7 +189,7 @@ class Stores extends CI_Model{
         if(empty($errors)){
             
             
-            
+            $this->browser->setData("step",1);
             $this->browser->setData('data_step_1',$data);
             
             
@@ -150,6 +210,7 @@ class Stores extends CI_Model{
         $this->browser->setData('data_step_2',array());
         $this->browser->setData('data_step_3',array());
         $this->browser->setData('data_step_4',array());
+        $this->browser->setData('step',0);
      
     }
     

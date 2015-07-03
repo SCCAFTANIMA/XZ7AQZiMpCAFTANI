@@ -6,25 +6,28 @@ class Ajax extends CI_Controller {
         
     public function getTypesTissus(){
         
-        $types = $this->input->post("type");
-        
-        echo "<select class=\"form-control type-select\" required aria-required=\"true\" id=\"tissus\" name=\"tissus\">
-                        <option value=\"0\">Choose</option>
-                        <option value=\"1\">Tissu 1</option>
-                        <option value=\"2\">Tissu 2</option>
-                  </select>
-                  <div class=\"type-select-delete\">
-                      <i class=\"fa fa-times\"></i>
-                  </div>";
+        echo $this->alldata->getTypeToHTML();
         
     }
     
     public function createstore(){
         
-        
-       
-         echo json_encode($this->stores->createStore());
-         exit();
+        $step = intval($this->input->post("step"));
+        if($step==1){
+            echo json_encode($this->stores->createStoreStep1());
+             exit();
+        }else if($step==2){
+            
+            echo json_encode($this->stores->createStoreStep2());
+             exit();
+            
+        }else if($step==3){
+            
+            echo json_encode($this->stores->createStoreStep3());
+             exit();
+            
+        }
+         
             
       
         

@@ -492,7 +492,7 @@
 
         
       </ul>
-	  </nav>
+</nav>
       
       <!--- this part will be hidden for mobile version -->
       <div class="nav navbar-nav navbar-right hidden-xs">

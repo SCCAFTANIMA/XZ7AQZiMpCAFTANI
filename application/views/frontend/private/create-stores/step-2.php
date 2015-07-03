@@ -27,24 +27,20 @@
                 <div class="col-xs-12 col-sm-6" style="min-height: 350px;">
                
                 <div class="form-group types-form required">
-                  <label for="InputState">Type des tissus <sup>*</sup> </label>
+                  <label for="InputState">Type des tissus  </label>
                   
-                  
-                  
-                  
-                  
-                  
+  
                   
                 
                 </div>
-                    <div class="loadin-type" style="margin-top: -20px"><i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Chargement en cours ...</div>
+                    <div class="loadin-type hidden" style="margin-top: -20px"><i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Chargement en cours ...</div>
 <!--                   <div class="addlist">
                       <span><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;<b>Ajouter un autre type</b></span>
                   </div>-->
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group required">
-                     <label for="InputState">Couleurs <sup>*</sup> </label>
+                     <label for="InputState">Couleurs  </label>
                   <ul id="select-colors">
                       <?php   foreach (Vars::$colors AS $key => $color): ?>
                       <li class="color_<?=$key?>" id="color" value="<?=$key?>" style="background-color: <?=$color?>" ></li>
@@ -65,8 +61,8 @@
                         <a class="btn btn-primary" href="creer-vitrine/steps?s=1#form"> 
                             <i class="fa fa-arrow-left"></i> &nbsp; Précédente </a> </div>
                     <div class="pull-right"> 
-                  <a class="btn btn-primary btn-small "  href="creer-vitrine/steps?s=3#form"> Continuer &nbsp; 
-                      <i class="fa fa-arrow-right hidden loading"></i> <i class="no-loading fa fa-spinner fa-spin"></i> </a> </div>
+                        <a class="btn btn-primary btn-small "  id="set-step-2" href="creer-vitrine/steps?s=3#form"> Continuer &nbsp; 
+                      <i class="fa fa-arrow-right loading"></i> <i class="no-loading hidden fa fa-spinner fa-spin"></i> </a> </div>
             
             </div>
           </div>
@@ -87,6 +83,57 @@
 </div>
 <script type="text/javascript">
     
+    <?php
+    
+        $this->browser->cleanToken("A-95655");
+        $token =  $this->browser->setToken("A-95655");
+                    
+    
+    ?>
+    
+     $("#set-step-2").on('click',function(){
+         
+         var colors = [];
+          $("#select-colors #color.checked").each(function(){
+                colors.push($(this).attr("value"));
+          });
+          var types = [];
+          $(".types-form .type-select-value").each(function(){
+                types.push($(this).attr("value"));
+                
+               
+          });
+          
+         $.ajax({
+             url:"ajax/createstore",
+             data:{"token":"<?=$token?>","step":"2","colors":colors,"types":types},
+             type: 'POST',
+             dataType: 'json',
+             beforeSend: function (xhr) {
+                     $("#set-step-2").removeClass("btn-primary");
+                     $("#set-step-2").addClass("btn-default");
+                     $("#set-step-2 .no-loading").removeClass("hidden");
+                     $("#set-step-2 .loading").addClass("hidden");
+             },
+             success: function (data, textStatus, jqXHR) {
+                        
+                   $("#set-step-2").addClass("btn-primary");
+                   $("#set-step-2").removeClass("btn-default");
+                   $("#set-step-2 .no-loading").addClass("hidden");
+                   $("#set-step-2 .loading").removeClass("hidden");
+                   
+                   document.location.href = data.url;
+                   console.log(data);
+
+             },error: function (jqXHR, textStatus, errorThrown) {
+                     console.log(jqXHR);
+             }
+         });
+         return false;
+     });
+    
+    
+    
     $("#select-colors #color").on('click',function(){
         
         if($(this).hasClass("checked")){
@@ -96,27 +143,40 @@
         }
     });
     
-    $("#select-colors #color.checked").each(function(){
-            $(this).attr("value");
-    });
     
     
     
-    $.ajax({
-        url:"ajax/getTypesTissus",
-        data:{"type":""},
-        success: function (data, textStatus, jqXHR) {           
-             $(".types-form").append(data);                    
-         },beforeSend: function (xhr) {
+    loadSelects(0);
+    
+    function loadSelects(arg){
+        
+   
+            $.ajax({
+                url:"ajax/getTypesTissus",
+                data:{"type":"","sup":arg},
+                success: function (data, textStatus, jqXHR) { 
                         
-         }
-    });
-    
-
+                     $(".loadin-type").addClass("hidden");
+                     $(".types-form").append(data);      
+                     
+                 },beforeSend: function (xhr) {  
+                     $(".loadin-type").removeClass("hidden");
+                 },error: function (jqXHR, textStatus, errorThrown) {
+                      console.log(jqXHR);
+                 }
+            });
+     
+    }
     
     
 
 </script>
+
+
+
+
+
+
 
 
 <!-- /main-container-->
