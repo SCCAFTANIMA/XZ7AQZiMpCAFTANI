@@ -43,19 +43,15 @@ $route['404_override'] = 'error';
 
 
 $route['ajax/(:any)'] = 'ajax/$1';
-
 $route['user/(:any)'] = 'user/$1';
 $route['home/(:any)'] = 'home/$1';
 $route['categorie/(:any)'] = 'home/categorie/$1';
-
-
-
 $route['page/(:any)'] = 'page/$1';
-
-
-
 $route['produit/(:any)'] = 'store/product/$1';
 $route['creer\-vitrine/(:any)'] = 'store/create/$1';
+
+$route['404'] = 'error/notfound404/$1';
+
 
 $route['(:any)'] = 'store/index/$1';
 

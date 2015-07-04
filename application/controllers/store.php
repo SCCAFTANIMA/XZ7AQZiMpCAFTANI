@@ -28,6 +28,8 @@ class Store extends CI_Controller {
     public function create(){
         
         
+        
+        
        if($this->browser->isLogged()){
             
         
@@ -83,6 +85,9 @@ class Store extends CI_Controller {
         
         
         }else{
+            
+            
+            $this->browser->setData("last_url_signin","creer-vitrine/steps?s=0");
             redirect("page/connexion");
         }
         

@@ -103,20 +103,20 @@
           
           <script>
     
-    <?php
-                    
-           $this->browser->cleanToken("S-95555");
-           $token = $this->browser->setToken("S-95555");  
-                    
-      ?>
+            
+            <?php
+            
+                $token = md5(encrypt(rand(000, 9999).  time()));
+            
+            ?>
 
             $(".SignInModel #signin-model").on('click',function(){
                 
                 var email_username = $(".SignInModel  #email-username").val();
                 var password = $(".SignInModel  #password").val();
                 $.ajax({
-                    url:"user/signin",
-                    data:{"email-username":email_username,"password":password,"token":"<?=$token?>"},
+                    url:"user/signin?token=<?=$token?>",
+                    data:{"email-username":email_username,"password":password,"token":"<?=  md5(encrypt($token))?>"},
                     dataType: 'json',
                     type: 'POST',
                     beforeSend: function (xhr) {
@@ -130,9 +130,18 @@
                          $(".SignInModel  .loading").addClass("hidden");
                          $(".SignInModel  .no-loading").removeClass("hidden");
 
-                         if(data.success===1 || data.success===-1){
+                         if(data.success===1){
                            
-                             //document.location.href = data.url;
+                           
+                           $("#ModalLogin").modal("hide");
+                           
+                            setTimeout(function(){
+                                document.location.href = data.url;
+                            },1500);
+                           
+                             
+                         }else if(data.success===-1){
+                             document.location.href = data.url;
                          }else{
                              for(var i in data.errors){
 
@@ -253,6 +262,8 @@
                 
               <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="page/compte"><span class="hidden-xs"> MON COMPTE</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+              <li> <a href="page/deconnecter"><span class="hidden-xs"> se déconnecter</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+              
               <?php else: ?>
               
               <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>

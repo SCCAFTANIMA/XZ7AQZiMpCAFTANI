@@ -9,6 +9,9 @@ class Browser extends CI_Model{
             
             $id_user = $this->getUserIdFromCookie();
             $getUserData = $this->getAllUserData();
+            
+            
+           
             if(empty($getUserData)){
                 $user = $this->users->checkUsersData($id_user);
                 $this->setAllUserData($user);
@@ -19,8 +22,18 @@ class Browser extends CI_Model{
     }
     
     
+    public function LogOut(){
+        
+        
+        $this->setAllUserData(array());
+        $this->setUserIdToCookie(0);
+        
+    }
+    
     public function isLogged(){
         
+     
+         
         if( !empty($this->getAllUserData()) AND intval($this->getUserIdFromCookie())>0 ){
             return TRUE;
         }
@@ -34,6 +47,8 @@ class Browser extends CI_Model{
         if($id>0){
             
             $this->session->set_userdata(array("__ID"=>  encrypt(  intval($id)  )));
+        }else{
+            $this->session->set_userdata(array("__ID"=>  0));
         }
         
     }
@@ -41,6 +56,7 @@ class Browser extends CI_Model{
     
     public function getUserIdFromCookie(){
         
+     
        $id = $this->session->userdata("__ID");
        if($id!=""){
            return decrypt($id);

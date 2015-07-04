@@ -74,6 +74,19 @@ class Page extends CI_Controller {
     
     
     
+    public function deconnecter(){
+        
+        if($this->browser->isLogged()){
+            
+            $this->browser->LogOut();
+            redirect("");
+            
+        }
+        
+    }
+    
+    
+    
     
     
     

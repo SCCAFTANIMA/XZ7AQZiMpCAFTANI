@@ -29,7 +29,7 @@ class Users extends CI_Model{
         
         $token = $this->input->post("token");
         $token_from_session = $this->browser->getToken("S-95555");
-        
+     
         $email_username = $this->input->post("email-username");
         $password = $this->input->post("password");
         
@@ -59,7 +59,7 @@ class Users extends CI_Model{
         }
         
         if($password!=""){
-                $data['password'] = cryptPassword();
+                $data['password'] = cryptPassword($password);
             }else{
                 $errors['password'] = "Mot de passe est invalide ! #09";
          }
@@ -71,13 +71,14 @@ class Users extends CI_Model{
          
          if(empty($errors) AND !empty($data)){
              
-             $user = $this->db->get("user",$data,1);
+             $user = $this->db->get("user",$data);
              
              $user = $user->result_array();
              
              if(count($user)==1){
 
-                 $this->browser->setAllUserData($user);   
+                 $this->browser->setUserIdToCookie($user[0]['id_user']);
+                 $this->browser->setAllUserData($user[0]);   
                  
              }else{
                  
@@ -88,18 +89,23 @@ class Users extends CI_Model{
          }
          
          if($token_from_session!=$token){
-           
-            
-             //return array("success"=>-1,"url"=>"page/connexion $token_from_session = $token");
-          
+             $token_2 = $this->input->get("token");
+             
+             if($token_2!="" AND md5(encrypt($token_2))!=$token){
+                 
+                 return array("success"=>-1,"url"=>"page/connexion#error-1");
+             }
+             
+             
          }
          
         
         if(empty($errors)){
             
                 $last_url = $this->browser->getData("last_url_signin");
+                $this->browser->setData("last_url_signin","");
                 
-                if($last_url!=""){
+                if($last_url==""){
                     $last_url = "page/compte/#signin";
                 }
             
