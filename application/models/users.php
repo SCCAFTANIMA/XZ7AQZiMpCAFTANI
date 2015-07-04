@@ -50,18 +50,18 @@ class Users extends CI_Model{
                 $data['username'] = $email_username;
                 
             }else{
-                $errors['email-username'] = "Email est invalide !";
+                $errors['email-username'] = "Email est invalide ! #03";
             }
 
    
         }else{
-            $errors['email-username'] = "Email ou le nom d'utlisation est invalide !";
+            $errors['email-username'] = "Email ou le nom d'utlisation est invalide ! #01";
         }
         
         if($password!=""){
                 $data['password'] = cryptPassword();
             }else{
-                $errors['password'] = "Mot de passe est invalide !";
+                $errors['password'] = "Mot de passe est invalide ! #09";
          }
         
         
@@ -88,7 +88,10 @@ class Users extends CI_Model{
          }
          
          if($token_from_session!=$token){
-             return array("success"=>-1,"url"=>"page/connexion");
+           
+            
+             //return array("success"=>-1,"url"=>"page/connexion $token_from_session = $token");
+          
          }
          
         

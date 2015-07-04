@@ -59,8 +59,10 @@
 <body>
 
     <?php if(!$this->browser->isLogged()): ?>
+    
+    
 <!-- Modal Login start -->
-<div class="modal signUpContent fade" id="ModalLogin" tabindex="-1" role="dialog" >
+<div class="modal signUpContent fade SignInModel" id="ModalLogin" tabindex="-1" role="dialog" >
   <div class="modal-dialog ">
     <div class="modal-content">
       <div class="modal-header">
@@ -69,13 +71,15 @@
       </div>
       <div class="modal-body">
         <div class="form-group login-username">
-          <div >
-            <input name="log" id="login-user" class="form-control input"  size="20" placeholder="Votre pseudo ou adresse email" type="text">
+          <div>
+              <label class="msg-error-form email-username"></label>
+            <input name="log" id="email-username" class="form-control input"  size="20" placeholder="Votre nom d'utlisation ou adresse email" type="text">
           </div>
         </div>
         <div class="form-group login-password">
           <div >
-            <input name="Password" id="login-password" class="form-control input"  size="20" placeholder="Mot de passe" type="password">
+               <label class="msg-error-form password"></label>
+            <input name="Password" id="password"  class="form-control input"  size="20" placeholder="Mot de passe" type="password">
           </div>
         </div>
         <div class="form-group">
@@ -89,9 +93,70 @@
         </div>
         <div >
           <div >
-            <input name="submit" class="btn  btn-block btn-lg btn-primary" value="Se connecter" type="submit">
+           
+            
+            <button class="btn btn-block btn-lg btn-primary" id="signin-model">
+                <i class="no-loading fa fa-sign-in"></i>
+    <i class="loading hidden fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Connecter</button>
           </div>
         </div>
+          
+          <script>
+    
+    <?php
+                    
+           $this->browser->cleanToken("S-95555");
+           $token = $this->browser->setToken("S-95555");  
+                    
+      ?>
+
+            $(".SignInModel #signin-model").on('click',function(){
+                
+                var email_username = $(".SignInModel  #email-username").val();
+                var password = $(".SignInModel  #password").val();
+                $.ajax({
+                    url:"user/signin",
+                    data:{"email-username":email_username,"password":password,"token":"<?=$token?>"},
+                    dataType: 'json',
+                    type: 'POST',
+                    beforeSend: function (xhr) {
+                        $(".SignInModel #signin").attr("disabled",true);
+                        $(".SignInModel  .loading").removeClass("hidden");
+                        $(".SignInModel  .no-loading").addClass("hidden");
+                    },
+                    success: function (data, textStatus, jqXHR) {
+
+                         $(".SignInModel  #signin").attr("disabled",false);
+                         $(".SignInModel  .loading").addClass("hidden");
+                         $(".SignInModel  .no-loading").removeClass("hidden");
+
+                         if(data.success===1 || data.success===-1){
+                           
+                             //document.location.href = data.url;
+                         }else{
+                             for(var i in data.errors){
+
+                                    $(".SignInModel #"+i).addClass("input-error");
+                                    $(".SignInModel ."+i).text(data.errors[i]);
+                             }
+                         }
+                         console.log(data);
+
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                           console.log(jqXHR);    
+                     }
+                });
+
+                return false;
+            });
+
+            var inputs_name = ["email-username","password"];
+            for(var i in inputs_name){skipError(inputs_name[i]);}
+            function skipError(arg){$($(".SignInModel  #"+arg)).keyup(function(){$(this).removeClass("input-error");$("."+arg).text("");});}
+
+
+       </script>
         <!--userForm--> 
         
       </div>
@@ -117,8 +182,7 @@
         <h3 class="modal-title-site text-center" > REGISTER </h3>
       </div>
       <div class="modal-body">
-        <div class="control-group"> <a class="fb_button btn  btn-block btn-lg " href="#"> SIGNUP WITH FACEBOOK </a> </div>
-        <h5 style="padding:10px 0 10px 0;" class="text-center"> OR </h5>
+       
         <div class="form-group reg-username">
           <div >
             <input name="login"  class="form-control input"  size="20" placeholder="Enter Username" type="text">
@@ -148,6 +212,8 @@
             <input name="submit" class="btn  btn-block btn-lg btn-primary" value="REGISTER" type="submit">
           </div>
         </div>
+          
+          
         <!--userForm--> 
         
       </div>

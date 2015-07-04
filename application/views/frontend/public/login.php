@@ -76,25 +76,35 @@
                     
       ?>
 
-     $("#signin").on('click',function(){
+     $(".userInfo #signin").on('click',function(){
          
-         var email_username = $("#email-username").val();
-         var password = $("#password").val();
+         var email_username = $(".userInfo #email-username").val();
+         var password = $(".userInfo #password").val();
          $.ajax({
              url:"user/signin",
              data:{"email-username":email_username,"password":password,"token":"<?=$token?>"},
              dataType: 'json',
              type: 'POST',
              beforeSend: function (xhr) {
-                 $("#signin").attr("disabled",true);
-                 $(".loading").removeClass("hidden");
-                 $(".no-loading").addClass("hidden");
+                 $(".userInfo #signin").attr("disabled",true);
+                 $(".userInfo .loading").removeClass("hidden");
+                 $(".userInfo .no-loading").addClass("hidden");
              },
              success: function (data, textStatus, jqXHR) {
                     
-                  $("#signin").attr("disabled",false);
-                  $(".loading").addClass("hidden");
-                  $(".no-loading").removeClass("hidden");
+                  $(".userInfo #signin").attr("disabled",false);
+                  $(".userInfo .loading").addClass("hidden");
+                  $(".userInfo .no-loading").removeClass("hidden");
+                  
+                  if(data.success===1 || data.success===-1){
+                      document.location.href = data.url;
+                  }else{
+                      for(var i in data.errors){
+                          
+                             $(".userInfo #"+i).addClass("input-error");
+                             $(".userInfo ."+i).text(data.errors[i]);
+                      }
+                  }
                   
                   console.log(data);
                     
@@ -107,6 +117,9 @@
          return false;
      });
 
+     var inputs_name = ["email-username","password"];
+     for(var i in inputs_name){skipError(inputs_name[i]);}
+     function skipError(arg){$(".userInfo  #"+arg).keyup(function(){$(this).removeClass("input-error");$("."+arg).text("");});}
 
 
 </script>
