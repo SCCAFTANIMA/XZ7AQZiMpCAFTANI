@@ -42,11 +42,12 @@ class Stores extends CI_Model{
             
             $store = array(
                 "name"  => $data['store']['name'],
+                "storeid"  => $data['store']['storeid'],
                 "description"   => $data['store']['description'],
                 "date"  => date('Y-m-d H:i',time()),
                 "emailpro"=>$data['store']['emailpro'], 
                 "telephonepro"=>$data['store']['telephonepro'], 
-                "User_id"=> $this->browser->getUser("id"), 
+                "User_id"=> $this->browser->getUser("id_user"), 
                 "Pack_id"=> $pack_id,  
             );
             
@@ -62,7 +63,7 @@ class Stores extends CI_Model{
                 
             );
             
-            $this->db->insert("store",$pack_store);
+            $this->db->insert("pack_store",$pack_store);
             
             return array("success"=>1,"url"=>"creer-vitrine/steps?s=5&id=".$store_id);
         }else{
@@ -157,7 +158,21 @@ class Stores extends CI_Model{
             if($storeid!=""){
                 $regex = "#^[a-zA-Z0-9 \-_.".REGEX_FR."]+$#i";
                 if(preg_match($regex, $storeid)){
-                    $data['storeid'] = clean($storeid);
+                    
+                    
+                    $this->db->where("storeid",  clean($storeid));
+                    $c = $this->db->count_all_results("store");
+                    
+                    if($c==0){
+                        
+                        $data['storeid'] = clean($storeid);
+                        
+                    }else{
+                        
+                         $errors['storeid'] = "Vitrine ID est deja exite choisissez un autre vitrine ID ";
+                    }
+                    
+                    
                 }else{
                     $errors['storeid'] = "Vitrine ID est invalide";
                 }

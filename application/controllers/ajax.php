@@ -8,10 +8,21 @@ class Ajax extends CI_Controller {
     public function __construct() {
         parent::__construct();
         
+        $this->browser->initSession();
         
     }
     
         
+    
+    
+    public function updateuserinfos(){
+        
+        echo json_encode($this->users->updateUserInfos());
+        exit;
+        
+    }
+    
+    
     public function getTypesTissus(){
         
         echo $this->alldata->getTypeToHTML();

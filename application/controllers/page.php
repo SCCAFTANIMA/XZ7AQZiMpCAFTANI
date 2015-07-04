@@ -4,8 +4,12 @@ class Page extends CI_Controller {
 
  
     
+    
     public function __construct() {
         parent::__construct();
+        
+        $this->browser->initSession();
+        
     }
     
     public function contact(){
@@ -22,7 +26,7 @@ class Page extends CI_Controller {
         if($this->browser->isLogged()){
             
             getContent("includes","header");
-            getContent("private","manage-profile");
+            getContent("private","manage-profile/manage-profile");
             getContent("includes","footer");
             
         }else{

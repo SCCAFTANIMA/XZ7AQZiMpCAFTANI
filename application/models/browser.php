@@ -5,13 +5,11 @@ class Browser extends CI_Model{
     
     public function initSession(){
         
-        if($this->isLogged()){
+        if(!$this->isLogged()){
             
             $id_user = $this->getUserIdFromCookie();
             $getUserData = $this->getAllUserData();
             
-            
-           
             if(empty($getUserData)){
                 $user = $this->users->checkUsersData($id_user);
                 $this->setAllUserData($user);
