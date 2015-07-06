@@ -114,4 +114,56 @@
     font-size: 18px;
     margin-left: 10px;
 }
+.panel .product{
+    margin-bottom: 10px;
+}
+.panel .product .image{
+    max-height: 178px;
+}
 
+.panel .product .image a img{
+    max-height: 168px;
+}
+
+.panel .product .description{
+    min-height: 70px;
+}
+
+#addimage{
+    display: inline-block;height: 50px;width: 50px;font-size: 350%
+}
+
+#progress{
+    height: 20px;
+    border: 1px solid #0083ff;
+    overflow: hidden;
+    padding: 1px;
+}
+
+#progress .percent{
+    background-color: #0083ff;
+    display: inline-block;
+    height: 100%;
+}
+
+#image-preview{
+    display: inline-block;height: 80px;width: 80px;
+    overflow: hidden;
+    border: 1px solid #dbdbdb;
+    position: relative;
+    text-align: center;
+}
+
+
+#image-preview img{
+    width: auto;
+    height: 100%;
+}
+
+.iamge-uploaded{
+    margin-top: 10px;
+    display: inline-block;
+    padding: 5px;
+    border: 1px solid #dbdbdb;
+    margin-right: 10px;
+}

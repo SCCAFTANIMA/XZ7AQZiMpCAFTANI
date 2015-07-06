@@ -30,7 +30,9 @@
                         <i class="fa fa-check fa-5"></i>
                     </div>
                     <h1>Félicitation votre vitrine à été créé avec succès</h1><br>
-                    <a class="btn btn-primary btn-small "  href="#"> 
+                    
+                    
+                    <a class="btn btn-primary btn-small "  href="<?=$this->browser->getData("__storeid")?>"> 
                       Commencer d'ajout vos produits&nbsp; 
                       <i class="fa fa-plus"></i> </a>
                 </div>

@@ -4,6 +4,46 @@ class Stores extends CI_Model{
     
     
     
+    public function IsStoreAdmin(){
+        
+        
+        $storeid = $this->uri->segment(1);
+        $userid = $this->browser->getUser("id_user");
+          
+        $regex = "#^[a-zA-Z0-9 \-_.".REGEX_FR."]+$#i";
+        if($regex !="" AND preg_match($regex, $storeid) ){
+               $this->db->where("storeid",  clean($storeid)); 
+               $this->db->where("User_id",$userid);
+               
+               
+               
+               $store = $this->db->count_all_results("store");
+               
+               
+               if($store>0){
+                   return TRUE;
+               }
+               
+        }
+        
+        return FALSE;
+        
+        
+    }
+    
+    public function getStoreData(){
+        
+        $storeid = $this->uri->segment(1);
+          
+        $regex = "#^[a-zA-Z0-9 \-_.".REGEX_FR."]+$#i";
+        if($regex !="" AND preg_match($regex, $storeid) ){
+               $this->db->where("storeid",  clean($storeid));  
+               $store = $this->db->get("store",1);
+               return $store->result();           
+        }
+        
+        return NULL;
+    }
     
     
     
@@ -43,7 +83,7 @@ class Stores extends CI_Model{
             $store = array(
                 "name"  => $data['store']['name'],
                 "storeid"  => $data['store']['storeid'],
-                "description"   => $data['store']['description'],
+                "description"   => @$data['store']['description'],
                 "date"  => date('Y-m-d H:i',time()),
                 "emailpro"=>$data['store']['emailpro'], 
                 "telephonepro"=>$data['store']['telephonepro'], 
@@ -64,6 +104,10 @@ class Stores extends CI_Model{
             );
             
             $this->db->insert("pack_store",$pack_store);
+            
+            
+            
+            $this->browser->setData("__storeid",$data['store']['storeid']);
             
             return array("success"=>1,"url"=>"creer-vitrine/steps?s=5&id=".$store_id);
         }else{
@@ -185,6 +229,8 @@ class Stores extends CI_Model{
                
                     $data['description'] = clean($description);
             
+            }else{
+                $data['description'] = "";
             }
             
             

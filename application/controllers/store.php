@@ -13,7 +13,42 @@ class Store extends CI_Controller {
     public function index(){
 
         
-        $this->errors->notfound();
+        $uri = $this->uri->segment(2);
+        
+        
+        if($uri=="addproduct" AND $this->stores->IsStoreAdmin()){
+                 
+            
+            $data['store'] = $this->stores->getStoreData();
+    
+            if(!empty($data['store']) OR $data['store']!=NULL){  
+                
+                getContent("includes","header",$data);
+                getContent("private","add-article");
+                getContent("includes","footer");
+            }else{
+                $this->errors->notfound();
+            }
+            
+            
+        }else{
+        
+            
+            $data['store'] = $this->stores->getStoreData();
+            
+            
+            if(!empty($data['store']) OR $data['store']!=NULL){
+                
+                getContent("includes","header",$data);
+                getContent("public","store");
+                getContent("includes","footer");
+            }else{
+                $this->errors->notfound();
+            }
+            
+            
+
+        }
       
     }
     

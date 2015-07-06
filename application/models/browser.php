@@ -25,6 +25,7 @@ class Browser extends CI_Model{
         
         $this->setAllUserData(array());
         $this->setUserIdToCookie(0);
+        session_destroy();
         
     }
     
@@ -137,6 +138,9 @@ class Browser extends CI_Model{
     public function setToken($value="0"){
         if($value!=""){
             $createToken = md5(rand(0, 9999).encrypt($value));
+
+           
+            
               $_SESSION['token'][$value] = $createToken;
               return $createToken;
         } 

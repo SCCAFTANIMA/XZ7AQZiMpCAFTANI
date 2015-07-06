@@ -34,9 +34,6 @@
                 
                 </div>
                     <div class="loadin-type hidden" style="margin-top: -20px"><i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Chargement en cours ...</div>
-<!--                   <div class="addlist">
-                      <span><i class="fa fa-plus-circle"></i> &nbsp;&nbsp;<b>Ajouter un autre type</b></span>
-                  </div>-->
               </div>
               <div class="col-xs-12 col-sm-6">
                 <div class="form-group required">
