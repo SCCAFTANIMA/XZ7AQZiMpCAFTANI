@@ -130,8 +130,16 @@
 }
 
 #addimage{
-    display: inline-block;height: 50px;width: 50px;font-size: 350%
+    display: inline-block;height: 50px;width: 55px;font-size: 350%;
+    overflow: hidden;
+   
+       
 }
+
+#addimage input[type=file]{
+    
+}
+
 
 #progress{
     height: 20px;
@@ -160,10 +168,12 @@
     height: 100%;
 }
 
-.iamge-uploaded{
+.image-uploaded{
     margin-top: 10px;
     display: inline-block;
     padding: 5px;
     border: 1px solid #dbdbdb;
     margin-right: 10px;
 }
+
+

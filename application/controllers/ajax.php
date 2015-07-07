@@ -13,7 +13,12 @@ class Ajax extends CI_Controller {
     }
     
         
-    
+     public function addproduct(){
+        
+        echo json_encode($this->stores->addproduct());
+        exit;
+        
+    }
     
     public function updateuserinfos(){
         

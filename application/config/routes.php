@@ -47,10 +47,15 @@ $route['user/(:any)'] = 'user/$1';
 $route['home/(:any)'] = 'home/$1';
 $route['categorie/(:any)'] = 'home/categorie/$1';
 $route['page/(:any)'] = 'page/$1';
+$route['upload/(:any)'] = 'upload/$1';
+
+
+
 $route['produit/(:any)'] = 'store/product/$1';
 $route['creer\-vitrine/(:any)'] = 'store/create/$1';
-
 $route['404'] = 'error/notfound404/$1';
+
+$route['images/(:any)'] = 'uploads/images/$1';
 
 
 $route['(:any)'] = 'store/index/$1';

@@ -96,7 +96,7 @@ class Browser extends CI_Model{
     public function getUser($index=''){
         
         
-        if($index!="" AND $_SESSION['user'][$index] AND $_SESSION['user'][$index]!=""){
+        if($index!="" AND isset($_SESSION['user'][$index]) AND $_SESSION['user'][$index] AND $_SESSION['user'][$index]!=""){
             return $_SESSION['user'][$index];
         }
         

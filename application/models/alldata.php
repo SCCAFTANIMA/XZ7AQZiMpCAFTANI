@@ -49,14 +49,18 @@ class Alldata extends CI_Model{
                     $(\".type-select_".$id."\").removeClass(\"selected\");
                          
                     $(\".delete_".$id."\").on('click',function(){ 
-                        $(\"#id_".$id ."\").remove();
+                        
+                        if($(\"#id_".$id ."\").hasClass('selected')){
+                            $(\"#id_".$id ."\").remove();
+                        }
                         return false;
                     });
                     $(\".type-select_".$id."\").on('change', function(evt){
                             var value = $(this).val();
                             $(\".id_".$id ."\").val(value);
                             if(!$(this).hasClass('selected')){
-                                 $(this).addClass('selected');
+                                $(\"#id_".$id ."\").addClass('selected');
+                                $(this).addClass('selected');
                                  loadSelects(0);
                             }
                      });

@@ -4,6 +4,28 @@ class Stores extends CI_Model{
     
     
     
+    public function addproduct(){
+        
+        $errors = array();
+        $data = array();
+        
+        $errors['title'] = "";
+        
+        
+        
+        if(empty($errors)){
+            
+            
+            
+            return array("success"=>1,"url"=>"");
+        }else{
+            return array("success"=>0,"errors"=>$errors);
+        }
+        
+        
+    }
+
+
     public function IsStoreAdmin(){
         
         

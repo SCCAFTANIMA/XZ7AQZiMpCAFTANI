@@ -51,42 +51,38 @@
                      <div class="form-group required">
                     <label for="name">Photo de produit<sup>*</sup> </label>
                     
-                    <label class="msg-error-form image"></label>
-                    <a href="#" id="addimage"><i class="fa fa-camera fa-3"></i></a>
+                    <label class="msg-error-form image-data"></label>
+<!--                    <div id="addimage"><i class="fa fa-camera fa-3"></i>
+                    
+                          
+                    
+                    
+                    </div>-->
+                    <input type="file" name="addimage" id="fileupload" /><br>
+                    
                     <div class="clear"></div>
                     
                     
-                    <div id="progress">
-                        <div class="percent" style="width: 5%"></div>
+                    <div id="progress" class="hidden">
+                        <div class="percent" style="width: 0%"></div>
                     </div>
                     
                     
                     <div class="clear"></div>
-                    <div class="iamge-uploaded">
+                    
+                   
+                    <div class="image-uploaded hidden" >
                         
                         <a href="#" id="image-preview" >    
-                            <img src="http://localhost/Projects/XZ7AQZiMpCAFTANI/template/images/product/31.jpg"/>
+                           
                         </a>
                         <div class="clear"></div>
                         <a href="#" id="delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;Supprimer</a>
-                        
+                        <input id="image-data" type="hidden" value="" >
                     </div>
                     
                     
                     
-                    
-                    <div class="iamge-uploaded">
-                        
-                        <a href="#" id="image-preview" >    
-                            <img src="http://localhost/Projects/XZ7AQZiMpCAFTANI/template/images/product/31.jpg"/>
-                        </a>
-                        <div class="clear"></div>
-                        <a href="#" id="delete"><i class="fa fa-trash"></i>&nbsp;&nbsp;Supprimer</a>
-                        
-                    </div>
-                    
-                    
-                    <input  type="hidden" value="" >
                   </div> 
                       
                   <div class="form-group required">
@@ -121,7 +117,7 @@
               
                     
                     
-                    <div class="form-group required" style="max-height: 200px;overflow: scroll">
+                    <div class="form-group required" style="max-height: 200px;overflow-y: scroll ">
                  
                         <ul id="select-colors">
                             <?php   foreach (Vars::$colors AS $key => $color): ?>
@@ -154,7 +150,7 @@
     <i class="loading hidden fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Ajouter</button>
     
     
-                    <a href="<?=$store->storeid?>" class="btn btn-primary" id="cancel">&nbsp;&nbsp;Ajouter</a>
+                    <a href="<?=$store->storeid?>" class="btn btn-primary" id="cancel">&nbsp;&nbsp;Annuler</a>
        
                 
                         
@@ -186,6 +182,10 @@
   <div style="clear:both"></div>
 </div>
 
+ <script src="<?=  base_url("template/plugins/uploader/js/jquery.iframe-transport.js")?>"></script>
+<script src="<?=  base_url("template/plugins/uploader/js/jquery.ui.widget.js")?>"></script>
+<script src="<?=  base_url("template/plugins/uploader/js/jquery.fileupload.js")?>"></script>
+           
 <script>
 
 $("#select-colors #color").on('click',function(){
@@ -220,5 +220,144 @@ $("#select-colors #color").on('click',function(){
             });
      
     }
+    
+    <?php
+    
+        $token = $this->browser->setToken("SUPIMAGES-4555");
+    
+    ?>
+    
+    Uploader();
+    function Uploader(){
+        
+            $('#fileupload').fileupload({
+                                url: "upload/image",
+                                sequentialUploads: true,
+                                formData     : {
+                                    'token'     : "<?=$token?>",
+                                    'ID'        : "<?=sha1($token)?>"
+                                 },
+                               dataType: 'json',
+                            done: function (e, data) {
+                                
+                                
+                               var results = data._response.result.results;
+                               $("#progress").addClass("hidden");
+                               $("#progress .percent").animate({"width":"0%"});
+                               $(".image-uploaded").removeClass("hidden");
+                               $("#image-preview").html(results.html);
+                               $("#image-data").val(results.image_data);
+
+                            },
+                            fail:function (e, data) { 
+                             
+                               $("#progress").addClass("hidden");
+                               $("#progress .percent").animate({"width":"0%"});
+                               
+                            },
+                            progressall: function (e, data) {   
+
+                         
+                         
+                                var progress = parseInt(data.loaded / data.total * 100, 10);
+                                
+                                 $("#progress").removeClass("hidden");
+                                 $("#progress .percent").animate({"width":progress+"%"},"linear");
+
+                            },
+                            progress: function (e, data) {   
+
+                         
+                         
+                                var progress = parseInt(data.loaded / data.total * 100, 10);
+                                
+                               
+
+                            },
+                            start: function (e) {   
+
+                            
+
+                            }
+                        });
+            
+        
+        
+    }
+
+<?php
+
+
+    $token = $this->browser->setToken("SD77852");
+
+?>
+
+
+    $("#add").on('click',function(){
+ 
+          var colors = [];
+          $("#select-colors #color.checked").each(function(){
+                colors.push($(this).attr("value"));
+          });
+          var types = [];
+          $(".types-form .type-select-value").each(function(){
+                types.push($(this).attr("value"));    
+          });
+                
+             var  image_data  = $("#image-data").val();
+             var title = $("#title").val();
+             var description = $("#description").val();
+             var price = $("#price").val();
+             
+             
+             $.ajax({
+                 url:"ajax/addproduct",
+                 data:{"colors":colors,"types":types,
+                     "image-data":image_data,"title":title,
+                     "description":description,"price":price,"token":"<?=$token?>"},
+                 dataType: 'json',
+                 type: 'POST',
+                 beforeSend: function (xhr) {
+                     $("#add").removeClass("btn-primary");
+                     $("#add").addClass("btn-default");
+                     $("#add .no-loading").addClass("hidden");
+                     $("#add .loading").removeClass("hidden");
+                     
+                     $("#add").attr("disabled",true);
+                 },
+                 success: function (data, textStatus, jqXHR) {
+                        
+                     $("#add").addClass("btn-primary");
+                     $("#add").removeClass("btn-default");
+                     $("#add .no-loading").removeClass("hidden");
+                     $("#add .loading").addClass("hidden");
+                     $("#add").attr("disabled",false);
+                     
+                     
+                      if(data.success===1){
+                         
+                         document.location.href = data.url;
+                         
+                     }else{
+                         for(var i in data.errors){
+                             $("#"+i).addClass("input-error");
+                             $("."+i).text(data.errors[i]);
+                         }
+                     }
+                      console.log(data);
+                 },
+                 error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(jqXHR);
+                 }
+             });
+             
+             return false;
+    });
+    
+    var inputs_name = ["image-data","title","description","price"];
+        for(var i in inputs_name){skipError(inputs_name[i]);}
+        function skipError(arg){$($("#"+arg)).keyup(function(){$(this).removeClass("input-error");$("."+arg).text("");});}
 
 </script>
+
+ 

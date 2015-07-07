@@ -3,6 +3,7 @@
 
 define("REGEX_FR", "ÀÂÆÇÉÈÊËÎÏÔŒÙÛÜŸÿüûùœôïîëêèéçæâà");
 define("ENCODING", "UTF-8");
+ define("_PATH", substr(FCPATH, -1));
 
 
 function clean($str=""){

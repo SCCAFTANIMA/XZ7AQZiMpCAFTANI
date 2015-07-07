@@ -10,12 +10,15 @@ class Store extends CI_Controller {
         
     }
     
+    
+    
+    
+    
+    
     public function index(){
 
         
         $uri = $this->uri->segment(2);
-        
-        
         if($uri=="addproduct" AND $this->stores->IsStoreAdmin()){
                  
             
@@ -67,10 +70,11 @@ class Store extends CI_Controller {
     }
     
     
+   
+    
+    
+    
     public function create(){
-        
-        
-        
         
        if($this->browser->isLogged()){
             

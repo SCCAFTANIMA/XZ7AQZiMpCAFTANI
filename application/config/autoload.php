@@ -52,10 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('session','database','vars',
-            'mtissu',
-            'mstore'
-    );
+$autoload['libraries'] = array('session','database','vars');
 
 
 /*
@@ -67,7 +64,7 @@ $autoload['libraries'] = array('session','database','vars',
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','functions');
+$autoload['helper'] = array('url','functions','images','simpleimage');
 
 
 /*
