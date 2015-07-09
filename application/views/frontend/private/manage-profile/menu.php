@@ -1,6 +1,6 @@
 <ul class="myAccountList row">
             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4  text-center ">
-              <div class="thumbnail equalheight"> <a title="Créer un vitrine" href="creer-vitrine/steps?s=0"> <i  class="fa fa-edit"> </i> Créer un vitrine</a> </div>
+              <div class="thumbnail equalheight"> <a title="Créer un vitrine" href="creer-vitrine/steps?s=0"> <i  class="fa fa-edit"> </i> Créer une vitrine</a> </div>
             </li>
             
             <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4  text-center ">

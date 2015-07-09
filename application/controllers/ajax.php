@@ -12,6 +12,21 @@ class Ajax extends CI_Controller {
         
     }
     
+    
+    public function getstoretoadd(){
+        
+        $token = $this->input->post("token");
+        $token_from_session = $this->browser->getToken("O785444");
+        
+        if($token_from_session==$token){
+            $__SID = decrypt($this->input->post("__SID"));
+            
+            echo json_encode(array("success"=>1,"url"=>$__SID));
+        }else{
+            echo json_encode(array("success"=>0));
+        }
+        
+    }
         
      public function addproduct(){
         
@@ -60,6 +75,13 @@ class Ajax extends CI_Controller {
             
       
         
+    }
+    
+    
+    public function getscats(){
+        
+        echo json_encode($this->stores->getSubCategories());
+        exit;
     }
     
     

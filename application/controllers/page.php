@@ -77,6 +77,25 @@ class Page extends CI_Controller {
     }
     
     
+    public function smvitrine(){
+        
+        
+        $data['store'] = $this->users->getMyStores();
+        
+        if(!empty($data['store']) AND count($data['store'])>1){
+            getContent("includes","header",$data);
+            getContent("private","select-mystores-to-add");
+            getContent("includes","footer");
+        }else if(!empty($data['store']) AND count($data['store'])==1){
+            redirect($data['store'][0]->storeid."/addproduct");
+        }
+        
+        
+        
+        
+    }
+    
+    
     
     public function deconnecter(){
         
@@ -88,6 +107,7 @@ class Page extends CI_Controller {
         }
         
     }
+    
     
     
     

@@ -3,7 +3,29 @@
 class Users extends CI_Model{
     
     
+    public function getColors(){
+        
+        
+        
+        $c = $this->db->get("color");
+        return $c->result();
+        
+    }
     
+    public function getMyStores(){
+        
+        $user_id = $this->browser->getUser("id_user");
+        
+        $this->db->where("User_id",$user_id);
+        
+        $this->db->where("status",0);
+        $this->db->or_where("status",1);
+   
+        $s = $this->db->get("store");
+        
+        return $s->result();
+        
+    }
     
     
     public function checkUsersData($id=0){

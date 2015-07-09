@@ -45,6 +45,7 @@
     background-color: #eeeeee;
     border: 1px solid #fff;
     cursor: pointer;
+    border: 1px solid #000;
 }
 
 #select-colors li.checked{

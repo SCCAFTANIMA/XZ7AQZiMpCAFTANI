@@ -261,6 +261,7 @@
              <?php if($this->browser->isLogged()): ?>
                 
               <li> <a href="creer-vitrine/steps?s=0"><span class="hidden-xs"> créer vitrine</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
+              <li> <a href="page/smvitrine"><span class="hidden-xs"> ajouter produit</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="page/compte"><span class="hidden-xs"> MON COMPTE</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               <li> <a href="page/deconnecter"><span class="hidden-xs"> se déconnecter</span> <i class="glyphicon glyphicon-user hide visible-xs "></i></a> </li>
               
@@ -461,12 +462,10 @@
               
               <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
                
-                  <li> <a href="#"> <strong>Soi</strong> </a> </li>
-                  <li> <a href="#"> <strong>Cachemir</strong> </a> </li>
-                <li> <a href="#"> <strong>Synthetique</strong> </a> </li>
-                <li> <a href="#"> <strong>XYZ</strong> </a> </li>
-                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
-                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+                  <li> <a href="#"> <strong>Imprime</strong> </a> </li>
+                  <li> <a href="#"> <strong>Uni</strong> </a> </li>
+                <li> <a href="#"> <strong>Jaquard</strong> </a> </li>
+                <li> <a href="#"> <strong>Perle</strong> </a> </li>
               </ul>
              
              
@@ -524,12 +523,11 @@
               
               <ul class="col-lg-2  col-sm-2 col-md-2  unstyled noMarginLeft">
                
-                  <li> <a href="#"> <strong>Broches</strong> </a> </li>
-                  <li> <a href="#"> <strong>Ruban en perle</strong> </a> </li>
-                <li> <a href="#"> <strong>Perles swarovski</strong> </a> </li>
-                <li> <a href="#"> <strong>XYZ</strong> </a> </li>
-                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
-                 <li> <a href="#"> <strong>XYZ</strong> </a> </li>
+                  <li> <a href="#"> <strong>Strass</strong> </a> </li>
+                  <li> <a href="#"> <strong>Perles</strong> </a> </li>
+                <li> <a href="#"> <strong>Galons</strong> </a> </li>
+                <li> <a href="#"> <strong>Tissu brode et perle</strong> </a> </li>
+                 <li> <a href="#"> <strong>Swarovski</strong> </a> </li>
               </ul>
              
              

@@ -36,12 +36,22 @@
                     <div class="loadin-type hidden" style="margin-top: -20px"><i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Chargement en cours ...</div>
               </div>
               <div class="col-xs-12 col-sm-6">
+                  
+                  
+                    
+                    <?php
+                    
+                        $colors = $this->users->getColors();
+                    
+                    
+                    ?>
+                  
                 <div class="form-group required">
                      <label for="InputState">Couleurs  </label>
                   <ul id="select-colors">
-                      <?php   foreach (Vars::$colors AS $key => $color): ?>
-                      <li class="color_<?=$key?>" id="color" value="<?=$key?>" style="background-color: <?=$color?>" ></li>
-                      <?php  endforeach; ?>
+                      <?php   foreach ($colors AS $key => $color): ?>
+                            <li class="color_<?=$color->id_Color?>" id="color" value="<?=$color->id_Color?>" style="background-color: <?=$color->name?>" ></li>
+                        <?php  endforeach; ?>
                      
                   </ul>
                      <input type="hidden" id="color-ids" value="">

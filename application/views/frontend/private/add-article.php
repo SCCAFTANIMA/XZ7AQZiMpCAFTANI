@@ -17,8 +17,8 @@
     <div class="breadcrumbDiv col-lg-12">
       <ul class="breadcrumb">
           <li> <a href="<?=  site_url("")?>">Accueil</a> </li>
-        <li> <a href="#">Ajout d'un produit</a> </li>
-        <li class="active"> 1er étape </li>
+        <li> <a href="page/smvitrine">Ajout d'un produit</a> </li>
+        <li class="active"> detail du produit </li>
       </ul>
     </div>
   </div>
@@ -91,7 +91,26 @@
                     <label class="msg-error-form title"></label>
                     <input required="" type="text" class="form-control" value="" name="title" id="title" placeholder="Le titre du produit">
                   </div>
-                    
+                      
+                 <?=$this->stores->getCategories()?> 
+                      
+                 <div class="form-group scatd-div required hidden">
+                    <label for="name">Sous categorie<sup>*</sup> </label>
+                     <label class="msg-error-form scatid"></label>  
+                          
+                     <div class="scatajax">
+                         <input type="hidden" id="scatid" value="0"/>
+                     </div>
+                 </div>
+                      
+             
+                             <div class="loadin-scats hidden" style="margin-top: 10px">
+                                <i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;Chargement en cours ...
+                                <br><br>
+                            </div>
+                  
+                   
+              
        
                   <div class="form-group required">
                     <label for="description">Description<sup>*</sup> </label>
@@ -116,12 +135,17 @@
                     <h2 class="block-title-2"> Sélectionner les couleurs </h2>
               
                     
+                    <?php
                     
+                        $colors = $this->users->getColors();
+                    
+                    
+                    ?>
                     <div class="form-group required" style="max-height: 200px;overflow-y: scroll ">
                  
                         <ul id="select-colors">
-                            <?php   foreach (Vars::$colors AS $key => $color): ?>
-                            <li class="color_<?=$key?>" id="color" value="<?=$key?>" style="background-color: <?=$color?>" ></li>
+                            <?php   foreach ($colors AS $key => $color): ?>
+                            <li class="color_<?=$color->id_Color?>" id="color" value="<?=$color->id_Color?>" style="background-color: <?=$color->name?>" ></li>
                             <?php  endforeach; ?>
 
                         </ul>
@@ -187,6 +211,54 @@
 <script src="<?=  base_url("template/plugins/uploader/js/jquery.fileupload.js")?>"></script>
            
 <script>
+
+<?php
+    
+        $token = $this->browser->setToken("SCAT64555");
+        
+        
+        
+    
+?>
+
+        $("#catid").on('change',function(){
+            
+            var catid = $(this).val();
+            
+            $.ajax({
+                url:"ajax/getscats",
+                data:{"catid":catid,"token":"<?=$token?>"},
+                type: 'POST',
+                dataType: 'json',
+                beforeSend: function (xhr) {
+                      $(".loadin-scats").removeClass("hidden");
+                },
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                        if(data.success===1){
+                            
+                            
+                          
+                            
+                            
+                            $(".loadin-scats").addClass("hidden");
+                            $(".scatd-div").removeClass("hidden");
+                            $(".scatajax").html(data.html);
+                        }else{
+                            $(".loadin-scats").addClass("hidden");
+                            $(".scatd-div").addClass("hidden");
+                            $(".scatajax").html("");
+                        }
+                 },
+                 error: function (jqXHR, textStatus, errorThrown) {
+                       
+                 }
+            });
+            
+            
+        });
+
+
 
 $("#select-colors #color").on('click',function(){
         
@@ -276,7 +348,8 @@ $("#select-colors #color").on('click',function(){
                             },
                             start: function (e) {   
 
-                            
+                                $("#fileupload").removeClass("input-error");
+                                $(".image-data").text("");
 
                             }
                         });
@@ -289,6 +362,8 @@ $("#select-colors #color").on('click',function(){
 
 
     $token = $this->browser->setToken("SD77852");
+    
+    $store_id = $this->browser->setData("__SID",$this->uri->segment(1));
 
 ?>
 
@@ -308,13 +383,15 @@ $("#select-colors #color").on('click',function(){
              var title = $("#title").val();
              var description = $("#description").val();
              var price = $("#price").val();
+             var scatid = $("#scatid").val();
+             var catid = $("#catid").val();
              
              
              $.ajax({
                  url:"ajax/addproduct",
                  data:{"colors":colors,"types":types,
                      "image-data":image_data,"title":title,
-                     "description":description,"price":price,"token":"<?=$token?>"},
+                     "description":description,"scatid":scatid,"catid":catid,"price":price,"token":"<?=$token?>","__SID":"<?=  encrypt($this->uri->segment(1))?>"},
                  dataType: 'json',
                  type: 'POST',
                  beforeSend: function (xhr) {
@@ -354,9 +431,10 @@ $("#select-colors #color").on('click',function(){
              return false;
     });
     
-    var inputs_name = ["image-data","title","description","price"];
+    var inputs_name = ["image-data","title","description","price","catid"];
         for(var i in inputs_name){skipError(inputs_name[i]);}
-        function skipError(arg){$($("#"+arg)).keyup(function(){$(this).removeClass("input-error");$("."+arg).text("");});}
+        function skipError(arg){$("#"+arg).keyup(function(){$(this).removeClass("input-error");$("."+arg).text("");});
+        $("#"+arg).change(function(){$(this).removeClass("input-error");$("."+arg).text("");});}
 
 </script>
 
